@@ -1,0 +1,38 @@
+.summary-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.summary-wrapper .techsets-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--shadowColor);
+  padding: 0.5rem;
+}
+
+.summary-wrapper .techsets-wrapper ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.summary-wrapper .finderSection-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+.summary-wrapper .finderSection-wrapper .finderLink-wrapper {
+  display: flex;
+  padding-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .summary-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+  .summary-wrapper .finderSection-wrapper {
+    padding-top: 0rem;
+  }
+}

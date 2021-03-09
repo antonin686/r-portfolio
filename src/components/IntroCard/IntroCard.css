@@ -1,0 +1,56 @@
+.introcard-wrapper {
+  border-left: 1px solid var(--borderColor);
+  border-right: 1px solid var(--borderColor);
+  border-bottom: 1px solid var(--borderColor);
+  background-color: var(--secondaryColor);
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.introcard-wrapper img {
+  width: 16rem;
+  height: 16rem;
+  object-fit: cover;
+}
+
+.introcard-wrapper .intro-summary {
+  margin: 3rem 1rem;
+}
+
+.introcard-wrapper .intro-shadow {
+  background-color: #111921;
+  width: 80%;
+  border-radius: 0.25rem;
+}
+
+.introcard-wrapper .intro-front {
+  position: relative;
+  background-color: rgba(25, 39, 52, 0.75);
+  border: 2px solid #17a2b8;
+  border-radius: 0.25rem;
+  left: 2.5rem;
+  top: 2.5rem;
+  padding: 2rem;
+}
+
+.introcard-wrapper .intro-title {
+  font-size: 1.8rem;
+  font-family: "Russo One", sans-serif;
+}
+
+.introcard-wrapper .intro-body {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .introcard-wrapper {
+    grid-template-columns: 1fr 1fr;
+    padding: 6rem 3rem;
+  }
+  .introcard-wrapper .intro-summary {
+    margin: 0rem 2rem;
+  }
+}
