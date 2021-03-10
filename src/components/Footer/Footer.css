@@ -2,10 +2,10 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: #15202b;
+  background: var(--primaryColor);
   text-align: center;
-  border-top: 1px solid #164d56;
-  border-bottom: 1px solid #164d56;
+  border-top: 1px solid var(--borderColor);
+  border-bottom: 1px solid var(--borderColor);
 }
 
 .footer p {

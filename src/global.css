@@ -18,7 +18,7 @@
 
 body {
   margin: 0;
-  background-color: var(--primaryColor);
+  background-color: var(--secondaryColor);
   color: var(--textColor);
   font-family: var(--bodyFont);
 }
@@ -99,6 +99,10 @@ p {
   text-align: center;
 }
 
+.text-danger {
+  color: #fc6058;
+}
+
 .loader {
   display: flex;
   height: 100vh;
@@ -111,16 +115,52 @@ p {
 }
 
 .section-secondary {
-  background-color: #192734;
+  background-color: var(--secondaryColor);
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
 }
 
-/* Media Querries */
+/* React-Elastic-Carousel */
+.rec-arrow {
+  color: white !important;
+}
 
+.rec-arrow[disabled] {
+  color: #4a5568 !important;
+}
+
+.rec-pagination .cJeRRR {
+  background-color: #b1afaf;
+}
+
+/* ScrollBar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: gray;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #17a2b8;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Media Querries */
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
+  }
+  .main-body {
+    padding-bottom: 3rem;
   }
 }
 
