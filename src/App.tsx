@@ -1,13 +1,15 @@
-import "./global.css";
+import "./styles/global.css";
+import "./styles/pages.css";
+import "./styles/components.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { AuthProvider } from "./helpers/AuthProvider";
-import Home from "./pages/Home/Home";
-import Footer from "./components/Footer/Footer";
-import Contact from "./pages/Contact/Contact";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
+import Contact from "./pages/Contact";
 function App() {
   return (
-    <div className="main-body">
+    <div className="main-body theme-normal">
       <AuthProvider>
         <BrowserRouter>
           <Switch>

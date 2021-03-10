@@ -1,4 +1,3 @@
-import "./FormGroup.css";
 import React from "react";
 
 const Form = ({ children, formMethods, handler, submitBtn }: any) => {

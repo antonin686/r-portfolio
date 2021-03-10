@@ -1,5 +1,3 @@
-import "./IntroCard.css";
-
 interface props {
   image: string;
   headerTitle: string;

@@ -1,6 +1,5 @@
-import "./Summary.css";
-import FinderLink from "./../FinderLink/FinderLink";
-import { IfinderLink } from "./../../helpers/Interfaces";
+import FinderLink from "./FinderLink";
+import { IfinderLink } from "../helpers/Interfaces";
 interface props {
   mainTitle: string;
   mainBody: string;

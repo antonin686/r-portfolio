@@ -1,17 +1,16 @@
-import "./Home.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import Carousel from "react-elastic-carousel";
 
-import { Itechset, IhomePage, Iproject } from "./../../helpers/Interfaces";
-import { homePageUrl, projectsUrl, resumeUrl } from "./../../helpers/ApiLinks";
-import useGetFetch from "./../../hooks/useGetFetch";
-import MacNav from "../../components/MacNav/MacNav";
-import IntroCard from "../../components/IntroCard/IntroCard";
-import Summary from "../../components/Summary/Summary";
-import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import { Itechset, IhomePage, Iproject } from "../helpers/Interfaces";
+import { homePageUrl, projectsUrl, resumeUrl } from "../helpers/ApiLinks";
+import useGetFetch from "../hooks/useGetFetch";
+import MacNav from "../components/MacNav";
+import IntroCard from "../components/IntroCard";
+import Summary from "../components/Summary";
+import ProjectCard from "../components/ProjectCard";
 
 function Home() {
   const [homePage, setHomePage] = useState<IhomePage | null>(null);

@@ -1,6 +1,4 @@
-import "./FinderLink.css";
-
-import { iconsUrl } from "./../../helpers/ApiLinks";
+import { iconsUrl } from "../helpers/ApiLinks";
 
 interface props {
   link: string;

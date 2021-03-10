@@ -1,14 +1,13 @@
-import "./Contact.css";
 import { useForm } from "react-hook-form";
 
-import { Form, Input, Textarea } from "./../../components/FormGroup/FormGroup";
-import { contactActionUrl } from "./../../helpers/ApiLinks";
-import MacNav from "./../../components/MacNav/MacNav";
+import { Form, Input, Textarea } from "../components/FormGroup";
+import { contactActionUrl } from "../helpers/ApiLinks";
+import MacNav from "../components/MacNav";
 import {
   fetchPostResopnse,
   successPopUp,
   errorPopUp,
-} from "./../../helpers/FormHelper";
+} from "../helpers/FormHelper";
 
 type Inputs = {
   name: string;

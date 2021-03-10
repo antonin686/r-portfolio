@@ -1,3 +1,19 @@
+/* Pages-Home */
+.title-home {
+  text-align: center;
+  font-size: 3.5rem;
+  font-family: var(--titleFont);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 3rem;
+}
+
+.projectCard-wrapper {
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+/* Pages-Contact */
 .contact-form-wrapper {
   margin-top: 1rem;
   margin-bottom: 1rem;
