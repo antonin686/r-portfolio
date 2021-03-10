@@ -15,7 +15,7 @@ import ProjectCard from "../../components/ProjectCard/ProjectCard";
 
 function Home() {
   const [homePage, setHomePage] = useState<IhomePage | null>(null);
-  const projects: any = useGetFetch(projectsUrl);
+  const projects: any = useGetFetch(projectsUrl, {reverse: true});
   const breakPoints = [
     { width: 550, itemsToShow: 1 },
     { width: 768, itemsToShow: 2 },
