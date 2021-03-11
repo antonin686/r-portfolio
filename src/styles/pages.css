@@ -63,7 +63,17 @@
   background: darkcyan;
 }
 
+
+
 @media (min-width: 768px) {
+  .contact-form-wrapper {
+    margin-top: 6rem;
+  }
+  .contact-form-wrapper form {
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .contact-form-wrapper {
     margin-top: 6rem;
   }

@@ -5,21 +5,21 @@ function PrivateRoute({ children, ...rest }: any) {
   const auth = useAuth();
 
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        auth.user.isAuth ? (
-          children
+    <div>
+      {auth.user.isAuth ? (
+        children ? (
+          <Route render={children} />
         ) : (
-          <Redirect
-            to={{
-              pathname: "/admin",
-              state: { from: location },
-            }}
-          />
+          <Route {...rest} />
         )
-      }
-    />
+      ) : (
+        <Route
+          render={({ location }) => (
+            <Redirect to={{ pathname: "/admin", state: { from: location } }} />
+          )}
+        />
+      )}
+    </div>
   );
 }
 

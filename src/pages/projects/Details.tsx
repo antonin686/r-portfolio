@@ -5,7 +5,6 @@ import ModalImage from "react-modal-image";
 import Loader from "react-loader-spinner";
 import MacNav from "./../../components/MacNav";
 import Summary from "./../../components/Summary";
-import FinderLink from "./../../components/FinderLink";
 
 import { projectsUrl } from "../../helpers/ApiLinks";
 import { IprojectFull, Itechset } from "../../helpers/Interfaces";

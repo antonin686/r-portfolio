@@ -6,16 +6,12 @@
   margin-top: 0.2rem;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .macnav-wrapper .dot-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: 0;
   padding-left: 0;
@@ -23,8 +19,6 @@
 }
 
 .macnav-wrapper .nav-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -40,10 +34,14 @@
 .macnav-wrapper .nav-wrapper .link-divider {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  position: relative;
+  bottom: .04rem;
 }
 
 .macnav-wrapper .nav-wrapper .icon {
   font-size: 1rem;
+  position: relative;
+  top: .25rem;
 }
 
 .macnav-wrapper .nav-wrapper .icon:hover {
@@ -269,4 +267,36 @@
 
 .footer p {
   padding: 0 1rem;
+}
+
+/* Component-Sidebar */
+.sidebar {
+  background: var(--secondaryColor);
+  border-top: 1px solid var(--borderColor);
+  border-left: 1px solid var(--borderColor);
+  border-right: 1px solid var(--borderColor);
+}
+
+.sidebar .sidebar-item {
+  font-family: var(--titleFont);
+  display: flex;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--borderColor);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar .sidebar-item .sidebar-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+
+.sidebar .sidebar-item:hover {
+  background: #181818;
+}
+
+.sidebar .active {
+  background: #111921;
 }
