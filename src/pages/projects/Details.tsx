@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ModalImage from "react-modal-image";
-import Loader from "react-loader-spinner";
 import MacNav from "./../../components/MacNav";
 import Summary from "./../../components/Summary";
 
 import { projectsUrl } from "../../helpers/ApiLinks";
 import { IprojectFull, Itechset } from "../../helpers/Interfaces";
+import CustomLoader from "../../components/CustomLoader";
 
 function Details() {
   const { id } = useParams<any>();
@@ -30,11 +30,7 @@ function Details() {
   return (
     <div>
       {!project ? (
-        <div className="loader">
-          <div className="m-auto">
-            <Loader type="Puff" color="#00BFFF" height={150} width={150} />
-          </div>
-        </div>
+        <CustomLoader />
       ) : (
         <div>
           <MacNav />

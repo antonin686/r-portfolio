@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import useAuth from "./../hooks/useAuth";
-import { Form, Input } from "../components/FormGroup";
+import { Form, Input, InputPass } from "../components/FormGroup";
 import MacNav from "../components/MacNav";
 
 import { loginActionUrl } from "./../helpers/ApiLinks";
@@ -44,7 +44,7 @@ function Login() {
             <div className="title-lg text-center">Enter Your Credentials</div>
             <Form formMethods={methods} handler={onSubmit} submitBtn="Submit">
               <Input name="username" rule={{ required: true }} />
-              <Input name="password" rule={{ required: true }} />
+              <InputPass name="password" rule={{ required: true }} />
             </Form>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loader from "react-loader-spinner";
 import axios from "axios";
 import Carousel from "react-elastic-carousel";
 
@@ -11,10 +10,11 @@ import MacNav from "../components/MacNav";
 import IntroCard from "../components/IntroCard";
 import Summary from "../components/Summary";
 import ProjectCard from "../components/ProjectCard";
+import CustomLoader from "../components/CustomLoader";
 
 function Home() {
   const [homePage, setHomePage] = useState<IhomePage | null>(null);
-  const projects: any = useGetFetch(projectsUrl, {reverse: true});
+  const projects: any = useGetFetch(projectsUrl, { reverse: true });
   const breakPoints = [
     { width: 550, itemsToShow: 1 },
     { width: 768, itemsToShow: 2 },
@@ -37,11 +37,7 @@ function Home() {
   return (
     <div>
       {!homePage ? (
-        <div className="loader">
-          <div className="m-auto title-lg">
-            <Loader type="Puff" color="#00BFFF" height={150} width={150} />
-          </div>
-        </div>
+        <CustomLoader />
       ) : (
         <div>
           <div className="section-primary border-bottom">
@@ -75,16 +71,7 @@ function Home() {
         <div className="container">
           <div className="projectCard-wrapper">
             {!projects ? (
-              <div className="loader">
-                <div className="m-auto title-lg">
-                  <Loader
-                    type="Puff"
-                    color="#00BFFF"
-                    height={150}
-                    width={150}
-                  />
-                </div>
-              </div>
+              <CustomLoader />
             ) : (
               <div>
                 <Carousel breakPoints={breakPoints} isRTL={false}>

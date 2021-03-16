@@ -35,13 +35,13 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   position: relative;
-  bottom: .04rem;
+  bottom: 0.04rem;
 }
 
 .macnav-wrapper .nav-wrapper .icon {
   font-size: 1rem;
   position: relative;
-  top: .25rem;
+  top: 0.25rem;
 }
 
 .macnav-wrapper .nav-wrapper .icon:hover {
@@ -299,4 +299,23 @@
 
 .sidebar .active {
   background: #111921;
+}
+
+/* Component-CustomLoader */
+.loader {
+  display: flex;
+  height: 100vh;
+}
+
+/* Component-BasicTab */
+.c-tab-wrapper {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-rows: auto;
+}
+
+@media (min-width: 768px) {
+  .c-tab-wrapper {
+    margin: 1rem 2rem;
+  }
 }

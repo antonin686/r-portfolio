@@ -36,7 +36,7 @@ const Form = ({ children, formMethods, handler, submitBtn }: any) => {
                 key: child.props.name,
               },
             })}
-            {child.props?.rule && formMethods.errors[child.props.name] && (
+            {formMethods.errors[child.props.name] && (
               <div className="text-danger">
                 *
                 {formMethods.errors[child.props.name].message
@@ -59,7 +59,6 @@ const DivRow = ({ children, formMethods, ...rest }: any) => {
 
   const convLabel = (name: string) => {
     let conv: string = "";
-
     if (name?.includes("_")) {
       let newName: string[] = name.split("_");
       let cap: string[] = [];
@@ -94,7 +93,7 @@ const DivRow = ({ children, formMethods, ...rest }: any) => {
                 *
                 {formMethods.errors[child.props.name].message
                   ? formMethods.errors[child.props.name].message
-                  : `${child.props.name} is required`}
+                  : `${label} is required`}
               </div>
             )}
           </div>
@@ -110,8 +109,15 @@ const Input = ({ register, name, label, rule, ...rest }: any) => {
   return <input name={name} ref={register(rule)} {...rest} />;
 };
 
-const InputReq = ({ register, name, label, ...rest }: any) => {
-  return <input name={name} ref={register({ required: true })} {...rest} />;
+const InputPass = ({ register, name, label, rule, ...rest }: any) => {
+  return <input type="password" name={name} ref={register(rule)} {...rest} />;
+};
+
+const InputReq = ({ register, name, label, rule, ...rest }: any) => {
+  if (!rule) {
+    rule = { required: true };
+  }
+  return <input name={name} ref={register(rule)} {...rest} />;
 };
 
 const Textarea = ({ register, name, label, rule, ...rest }: any) => {
@@ -119,13 +125,8 @@ const Textarea = ({ register, name, label, rule, ...rest }: any) => {
 };
 
 const TextareaReq = ({ register, name, label, ...rest }: any) => {
-  return (
-    <textarea
-      name={name}
-      ref={register({ required: true })}
-      {...rest}
-    ></textarea>
-  );
+  let rule = { required: true };
+  return <textarea name={name} ref={register(rule)} {...rest}></textarea>;
 };
 
 const SubmitButton = ({ btnName, ...rest }: any) => {
@@ -136,4 +137,13 @@ const SubmitButton = ({ btnName, ...rest }: any) => {
   );
 };
 
-export { Form, DivRow, Input, InputReq, Textarea, TextareaReq, SubmitButton };
+export {
+  Form,
+  DivRow,
+  Input,
+  InputPass,
+  InputReq,
+  Textarea,
+  TextareaReq,
+  SubmitButton,
+};
