@@ -7,16 +7,12 @@ import {
   Input,
   TextareaReq,
   SubmitButton,
-} from "./../components/FormGroup";
+} from "../FormGroup";
 
-import {
-  fetchPostResopnse,
-  successPopUp,
-  errorPopUp,
-} from "./../helpers/FormHelper";
-import { pagesUpdateUrl } from "./../helpers/ApiLinks";
+import { succMsg, errMsg, fetchPostRes } from "../../helpers/FormHelper";
+import { pagesUpdateUrl } from "../../helpers/ApiLinks";
 
-import { IpageInfo } from "./../helpers/Interfaces";
+import { IpageInfo } from "../../helpers/Interfaces";
 
 type Inputs = {
   header_title: string;
@@ -48,11 +44,11 @@ function BasicTab({
   });
 
   const onSubmit = async (data: Inputs) => {
-    const result = await fetchPostResopnse(pagesUpdateUrl + `/1`, data);
+    const result = await fetchPostRes(pagesUpdateUrl + `/1`, data);
     if (result === 200) {
-      successPopUp("Basic Info Updated", () => {});
+      succMsg("Basic Info Updated", () => {});
     } else {
-      errorPopUp("An Error Occurred");
+      errMsg("An Error Occurred");
     }
   };
 

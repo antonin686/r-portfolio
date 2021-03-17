@@ -6,11 +6,7 @@ import { Form, Input, InputPass } from "../components/FormGroup";
 import MacNav from "../components/MacNav";
 
 import { loginActionUrl } from "./../helpers/ApiLinks";
-import {
-  fetchPostResopnse,
-  successPopUp,
-  errorPopUp,
-} from "./../helpers/FormHelper";
+import { fetchPostRes, succMsg, errMsg } from "./../helpers/FormHelper";
 
 type Inputs = {
   username: string;
@@ -23,14 +19,14 @@ function Login() {
   const methods = useForm<Inputs>();
 
   const onSubmit = async (data: Inputs) => {
-    const result = await fetchPostResopnse(loginActionUrl, data);
+    const result = await fetchPostRes(loginActionUrl, data);
     if (result.isAuth) {
-      successPopUp("Credentials Matched", () => {
+      succMsg("Credentials Matched", () => {
         auth.signIn(result);
         history.push("/admin/dashboard");
       });
     } else {
-      errorPopUp("Credentials Does Not Matched");
+      errMsg("Credentials Does Not Matched");
     }
   };
 

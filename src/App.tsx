@@ -12,19 +12,23 @@ import PorjectDetails from "./pages/projects/Details";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/admin/Dashboard";
 import HomePage from "./pages/admin/HomePage";
+import ProjectIndex from "./pages/projects/Index";
+import ScrollToTop from "./helpers/ScrollToTop";
 
 function App() {
   return (
     <div className="main-body theme-normal">
       <AuthProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/contact" component={Contact} />
             <Route path="/projects/:id" component={PorjectDetails} />
             <Route exact path="/admin" component={Login} />
-            <PrivateRoute path="/admin/dashboard" component={Dashboard}/>
-            <PrivateRoute path="/admin/home-page" component={HomePage}/>
+            <PrivateRoute path="/admin/dashboard" component={Dashboard} />
+            <PrivateRoute path="/admin/home-page" component={HomePage} />
+            <PrivateRoute path="/admin/projects" component={ProjectIndex} />
           </Switch>
         </BrowserRouter>
       </AuthProvider>

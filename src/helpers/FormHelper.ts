@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const successPopUp = (message: string, callback: any) => {
+const succMsg = (message: string, callback: any) => {
   Swal.fire({
     position: "center",
     icon: "success",
@@ -13,7 +13,7 @@ const successPopUp = (message: string, callback: any) => {
   });
 };
 
-const errorPopUp = (message: string) => {
+const errMsg = (message: string) => {
   Swal.fire({
     position: "center",
     icon: "error",
@@ -23,7 +23,7 @@ const errorPopUp = (message: string) => {
   });
 };
 
-const fetchPostResopnse = async (action: string, data: any) => {
+const fetchPostRes = async (action: string, data: any) => {
   let formdata = new FormData();
   let dataArr = Object.entries(data).map(([key, value]) => ({ key, value }));
 
@@ -36,4 +36,4 @@ const fetchPostResopnse = async (action: string, data: any) => {
   return myObject.data;
 };
 
-export { fetchPostResopnse, successPopUp, errorPopUp };
+export { succMsg, errMsg, fetchPostRes };

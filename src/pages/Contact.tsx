@@ -3,11 +3,7 @@ import { useForm } from "react-hook-form";
 import { Form, Input, Textarea } from "../components/FormGroup";
 import { contactActionUrl } from "../helpers/ApiLinks";
 import MacNav from "../components/MacNav";
-import {
-  fetchPostResopnse,
-  successPopUp,
-  errorPopUp,
-} from "../helpers/FormHelper";
+import { fetchPostRes, succMsg, errMsg } from "../helpers/FormHelper";
 
 type Inputs = {
   name: string;
@@ -19,13 +15,13 @@ type Inputs = {
 function Contact() {
   const methods = useForm<Inputs>();
   const onSubmit = async (data: Inputs) => {
-    const result = await fetchPostResopnse(contactActionUrl, data);
+    const result = await fetchPostRes(contactActionUrl, data);
     if (result === 200) {
-      successPopUp("Your Message Has Been Sent", () => {
+      succMsg("Your Message Has Been Sent", () => {
         methods.reset();
       });
     } else {
-      errorPopUp("An Error Occurred");
+      errMsg("An Error Occurred");
     }
   };
 

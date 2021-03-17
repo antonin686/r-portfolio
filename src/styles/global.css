@@ -270,6 +270,83 @@ textarea.c-input {
   }
 }
 
+/* Table */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table thead {
+  background: #111921;
+  padding: 0.75rem;
+  text-align: left;
+  border-top: 1px solid #164d56;
+  border-bottom: 1px solid #164d56;
+}
+
+.table thead th {
+  padding: 0.5rem;
+}
+
+.table tbody {
+  text-align: left;
+}
+
+.table tbody tr:hover {
+  background: #181818;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #15202b;
+}
+
+.table tbody tr:nth-child(even):hover {
+  background: #181818;
+}
+
+.table tbody td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #164d56;
+}
+
+.table-search-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.table-search-box input {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: whitesmoke;
+  color: black;
+  border: 1px solid #164d56;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.table-search-box input:focus {
+  outline: none;
+  border: 2px solid #17a2b8;
+}
+
+.responsive {
+  overflow-x: auto;
+}
+
+
+@media (min-width: 768px) {
+  .table-responsive-md {
+    overflow-x: auto;
+  }
+}
+
 /* Buttons */
 .btn-link {
   background: none;

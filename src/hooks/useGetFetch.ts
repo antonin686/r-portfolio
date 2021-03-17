@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 interface Ioptions {
@@ -8,15 +8,18 @@ interface Ioptions {
 function useGetFetch(url: string, options?: Ioptions) {
   const [state, setstate] = useState(null);
 
-
-  useEffect(() => {
+  const getMethod = useCallback(() => {
     axios.get(url).then((response) => {
-      if(options?.reverse === true) {
+      if (options?.reverse === true) {
         response.data = response.data.reverse();
       }
       setstate(response.data);
     });
-  }, [url, options?.reverse]);
+  }, [options?.reverse, url]);
+
+  useEffect(() => {
+    getMethod();
+  }, [url, options?.reverse, getMethod]);
 
   return state;
 }

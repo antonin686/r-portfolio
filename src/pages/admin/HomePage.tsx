@@ -4,7 +4,8 @@ import Sidebar from "./../../components/Sidebar";
 import { homePageUrl } from "../../helpers/ApiLinks";
 import useGetFetch from "../../hooks/useGetFetch";
 import CustomLoader from "../../components/CustomLoader";
-import BasicTab from "../../components/BasicTab";
+import BasicTab from "../../components/tabs/BasicTab";
+import TechsetsTab from "../../components/tabs/TechsetsTab";
 
 function HomePage() {
   const tabItems = ["Basic", "Techsets", "Links"];
@@ -40,6 +41,10 @@ function HomePage() {
                       extra_body={homePage.pageInfo.extra_body}
                     />
                   )}
+                  {tab === "Techsets" && (
+                    <TechsetsTab techsets={homePage.techsets}/>
+                  )}
+
                 </div>
               )}
             </div>
