@@ -102,6 +102,9 @@ p {
 .text-danger {
   color: #fc6058;
 }
+.text-primary {
+  color: var(--textColor);
+}
 
 .section-primary {
   background-color: var(--primaryColor);
@@ -124,6 +127,10 @@ p {
 
 .flex {
   display: flex;
+}
+
+.bg-primary {
+  background: var(--primaryColor);
 }
 
 .grid-center {
@@ -241,7 +248,18 @@ p {
 }
 
 .c-input {
-  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #192734;
+  border: 1px solid #164d56;
+  color: white;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.c-table-input{
   box-sizing: border-box;
   background: #192734;
   border: 1px solid #164d56;
@@ -313,12 +331,9 @@ textarea.c-input {
 }
 
 .table-search-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
+  padding-top: 1rem;
 }
 
 .table-search-box input {
@@ -326,14 +341,14 @@ textarea.c-input {
   box-sizing: border-box;
   background: whitesmoke;
   color: black;
-  border: 1px solid #164d56;
+  border: 1px solid var(--borderColor);
   padding: 0.5rem;
   border-radius: 0.25rem;
 }
 
 .table-search-box input:focus {
   outline: none;
-  border: 2px solid #17a2b8;
+  border: 2px solid var(--frontLineColor);
 }
 
 .responsive {

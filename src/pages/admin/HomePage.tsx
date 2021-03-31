@@ -10,7 +10,7 @@ import TechsetsTab from "../../components/tabs/TechsetsTab";
 function HomePage() {
   const tabItems = ["Basic", "Techsets", "Links"];
   const { tab, Tabs } = useNavTabs(tabItems, "Basic");
-  const homePage: any = useGetFetch(homePageUrl);
+  const [homePage]: any = useGetFetch(homePageUrl);
 
   return (
     <div>
@@ -42,7 +42,7 @@ function HomePage() {
                     />
                   )}
                   {tab === "Techsets" && (
-                    <TechsetsTab techsets={homePage.techsets}/>
+                    <TechsetsTab page_id={1}/>
                   )}
 
                 </div>

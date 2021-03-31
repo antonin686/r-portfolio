@@ -1,4 +1,4 @@
-const Cprojects = [
+const ProjectCol = [
   {
     Header: "#",
     accessor: "id",
@@ -23,4 +23,4 @@ const Cprojects = [
   },
 ];
 
-export { Cprojects };
+export default ProjectCol;

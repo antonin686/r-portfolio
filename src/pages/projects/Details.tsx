@@ -55,8 +55,7 @@ function Details() {
                   project.images.map((image) => (
                     <div key={image.id}>
                       <div className="title-md">{image.title}</div>
-                      <p>{image.description}</p>
-                      {/* <img src={image.path} alt={image.title}/> */}
+                      <p>{image.description}</p>            
                       <ModalImage
                         small={image.path}
                         large={image.path}

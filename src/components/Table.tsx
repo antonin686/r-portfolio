@@ -1,17 +1,19 @@
 import { useMemo, useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import { useTable, useGlobalFilter, useSortBy } from "react-table";
 
 interface Iprops {
   columns: any;
   data: any;
+  clickRedirectURL?: string;
 }
 
-function Table({ columns: COLUMNS, data: DATA }: Iprops) {
+function Table({ columns: COLUMNS, data: DATA, clickRedirectURL }: Iprops) {
   const columns = useMemo(() => COLUMNS, [COLUMNS]);
   const data = useMemo(() => DATA, [DATA]);
-
+  const history = useHistory();
   const tableInstance: any = useTable(
-    { columns, data },
+    { columns, data, initialState: { hiddenColumns: ["id"] } },
     useGlobalFilter,
     useSortBy
   );
@@ -42,6 +44,13 @@ function Table({ columns: COLUMNS, data: DATA }: Iprops) {
     );
   }, []);
 
+  const clickHandler = (event: React.MouseEvent<HTMLElement>) => {
+    const id = event.currentTarget.firstChild?.textContent;
+    if (clickRedirectURL && id) {
+      history.push(clickRedirectURL + id);
+    }
+  };
+
   return (
     <div>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
@@ -64,7 +73,10 @@ function Table({ columns: COLUMNS, data: DATA }: Iprops) {
           {rows.map((row: any) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                onClick={clickRedirectURL ? clickHandler : undefined}
+                {...row.getRowProps()}
+              >
                 {row.cells.map((cell: any) => {
                   return (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>

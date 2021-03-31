@@ -3,6 +3,7 @@ import "./styles/pages.css";
 import "./styles/components.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+import ScrollToTop from "./helpers/ScrollToTop";
 import { AuthProvider } from "./helpers/AuthProvider";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
@@ -13,7 +14,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/admin/Dashboard";
 import HomePage from "./pages/admin/HomePage";
 import ProjectIndex from "./pages/projects/Index";
-import ScrollToTop from "./helpers/ScrollToTop";
+import ProjectShow from "./pages/projects/Show";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
             <Route exact path="/admin" component={Login} />
             <PrivateRoute path="/admin/dashboard" component={Dashboard} />
             <PrivateRoute path="/admin/home-page" component={HomePage} />
-            <PrivateRoute path="/admin/projects" component={ProjectIndex} />
+            <PrivateRoute exact path="/admin/projects" component={ProjectIndex} />
+            <PrivateRoute path="/admin/projects/:id" component={ProjectShow} />
           </Switch>
         </BrowserRouter>
       </AuthProvider>

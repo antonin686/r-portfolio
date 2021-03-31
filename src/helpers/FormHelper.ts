@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const succMsg = (message: string, callback: any) => {
+const succMsg = (message: string, callback?: any) => {
   Swal.fire({
     position: "center",
     icon: "success",
@@ -9,7 +9,7 @@ const succMsg = (message: string, callback: any) => {
     showConfirmButton: false,
     timer: 1500,
   }).then(() => {
-    callback();
+    if (callback) callback();
   });
 };
 
@@ -17,7 +17,7 @@ const errMsg = (message: string) => {
   Swal.fire({
     position: "center",
     icon: "error",
-    title: "Credentials Does Not Matched",
+    title: message,
     showConfirmButton: false,
     timer: 1500,
   });
@@ -36,4 +36,9 @@ const fetchPostRes = async (action: string, data: any) => {
   return myObject.data;
 };
 
-export { succMsg, errMsg, fetchPostRes };
+const fetchGetRes = async (action: string) => {
+  let myObject = await axios.get(action);
+  return myObject.data;
+};
+
+export { succMsg, errMsg, fetchPostRes, fetchGetRes };

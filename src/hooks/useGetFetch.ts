@@ -21,7 +21,10 @@ function useGetFetch(url: string, options?: Ioptions) {
     getMethod();
   }, [url, options?.reverse, getMethod]);
 
-  return state;
+  const renewState = () => {
+    getMethod();
+  } 
+  return [state, renewState];
 }
 
 export default useGetFetch;

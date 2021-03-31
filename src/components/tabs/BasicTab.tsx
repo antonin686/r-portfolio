@@ -8,10 +8,8 @@ import {
   TextareaReq,
   SubmitButton,
 } from "../FormGroup";
-
 import { succMsg, errMsg, fetchPostRes } from "../../helpers/FormHelper";
 import { pagesUpdateUrl } from "../../helpers/ApiLinks";
-
 import { IpageInfo } from "../../helpers/Interfaces";
 
 type Inputs = {
@@ -46,7 +44,7 @@ function BasicTab({
   const onSubmit = async (data: Inputs) => {
     const result = await fetchPostRes(pagesUpdateUrl + `/1`, data);
     if (result === 200) {
-      succMsg("Basic Info Updated", () => {});
+      succMsg("Basic Info Updated");
     } else {
       errMsg("An Error Occurred");
     }

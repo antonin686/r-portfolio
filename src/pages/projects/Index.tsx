@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
 import MacNav from "./../../components/MacNav";
 import Sidebar from "./../../components/Sidebar";
 import { projectsUrl } from "./../../helpers/ApiLinks";
 import Table from "./../../components/Table";
-import { Cprojects } from "./../../helpers/TableColumns";
+import ProjectCol from "./../../helpers/columns/ProjectCol";
 import useGetFetch from "./../../hooks/useGetFetch";
 
 function Index() {
   const projects = useGetFetch(projectsUrl);
+
   return (
     <div>
       <MacNav />
@@ -20,7 +20,13 @@ function Index() {
             <div className="c-card-header">Projects</div>
             <div className="c-card-body">
               <div className="responsive">
-                {projects && <Table columns={Cprojects} data={projects} />}
+                {projects && (
+                  <Table
+                    columns={ProjectCol}
+                    data={projects}
+                    clickRedirectURL={"/admin/projects/"}
+                  />
+                )}
               </div>
             </div>
           </div>
