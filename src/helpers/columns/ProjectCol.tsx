@@ -1,7 +1,13 @@
 const ProjectCol = [
   {
-    Header: "#",
+    Header: "id",
     accessor: "id",
+  },
+  {
+    Header: "#",
+    Cell: ({row}: any) => {
+      return row.original.id;
+    },
   },
   {
     Header: "Title",

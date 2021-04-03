@@ -6,7 +6,7 @@ import ProjectCol from "./../../helpers/columns/ProjectCol";
 import useGetFetch from "./../../hooks/useGetFetch";
 
 function Index() {
-  const projects = useGetFetch(projectsUrl);
+  const [projects] = useGetFetch(projectsUrl);
 
   return (
     <div>

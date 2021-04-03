@@ -11,24 +11,34 @@ import {
 import Table from "./../Table";
 import TechsetCol from "./../../helpers/columns/TechsetCol";
 import { fetchPostRes, succMsg, errMsg } from "./../../helpers/FormHelper";
-import { techsetsPageUrl } from "./../../helpers/ApiLinks";
 import { techsetsCreateUrl } from "./../../helpers/ApiLinks";
-
-function TechsetsTab({ page_id }: any) {
+interface props {
+  page_id: number;
+  techsets: any;
+  renewState: any;
+}
+function TechsetsTab({ page_id, techsets, renewState }: props) {
   const [open, setOpen] = useState<boolean>(false);
   const nameEl = useRef<any>(null);
   const extraEl = useRef<any>(null);
-  const [techsets, renewState]: any = useGetFetch(techsetsPageUrl + page_id);
+  const [nameErr, setNameErr] = useState(false);
   const columns = TechsetCol(renewState);
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    setNameErr(false);
   };
   const submitHandler = async () => {
+    if (!nameEl.current.value) {
+      setNameErr(true);
+      return;
+    } else {
+      setNameErr(false);
+    }
     let data = {
-      page_id: 1,
+      page_id: page_id,
       name: nameEl.current.value,
       extra: extraEl.current.value,
     };
@@ -74,6 +84,9 @@ function TechsetsTab({ page_id }: any) {
             <DialogContent dividers>
               <label className="text-primary">Name</label>
               <input ref={nameEl} className="c-input" />
+              {nameErr && (
+                <div className="text-danger">*Name Cant Be Empty!</div>
+              )}
               <label className="text-primary">Extra</label>
               <input ref={extraEl} className="c-input" />
             </DialogContent>

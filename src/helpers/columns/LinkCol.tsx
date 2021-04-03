@@ -4,10 +4,10 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
 
 import { fetchGetRes, fetchPostRes, succMsg, errMsg } from "./../FormHelper";
-import { techsetsUpdateUrl, techsetsDeleteUrl } from "./../ApiLinks";
+import { finderLinkUpdateUrl, finderLinkDeleteUrl } from "./../ApiLinks";
 import Swal from "sweetalert2";
 
-const TechsetCol = (renewState: any) => {
+const LinkCol = (icons: any, renewState: any) => {
   const inputRefs: any = useRef([]);
   inputRefs.current = [];
 
@@ -18,23 +18,29 @@ const TechsetCol = (renewState: any) => {
   };
 
   const updateHandler = async (row: any) => {
-    let newNameValue = null;
-    let newExtraValue = null;
+    let newIconValue: string | null = null;
+    let newLinkValue: string | null = null;
     inputRefs.current.forEach((element: any) => {
-      if (element.name === "name" + row.original.id) {
-        newNameValue = element.value;
-      } else if (element.name === "extra" + row.original.id) {
-        newExtraValue = element.value;
+      if (
+        element.tagName === "SELECT" &&
+        element.name === "icon" + row.original.id
+      ) {
+        newIconValue = element.value;
+      } else if (
+        element.tagName === "INPUT" &&
+        element.name === "link" + row.original.id
+      ) {
+        newLinkValue = element.value;
       }
     });
 
-    let data = { name: newNameValue, extra: newExtraValue };
-    let url = techsetsUpdateUrl + `/${row.original.id}`;
+    let data = { icon_id: newIconValue, link: newLinkValue };
+    let url = finderLinkUpdateUrl + row.original.id;
     let result = await fetchPostRes(url, data);
 
     if (result === 200) {
       renewState();
-      succMsg("Techset Updated");
+      succMsg("Link Updated");
     } else {
       errMsg("An Error Occurred");
     }
@@ -51,10 +57,7 @@ const TechsetCol = (renewState: any) => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        let response = await fetchGetRes(
-          techsetsDeleteUrl + `/${row.original.id}`
-        );
-
+        let response = await fetchGetRes(finderLinkDeleteUrl + row.original.id);
         if (response === 200) {
           renewState();
           Swal.fire("Deleted!", "Successfully Deleted.", "success");
@@ -64,7 +67,6 @@ const TechsetCol = (renewState: any) => {
       }
     });
   };
-
   const columns = [
     {
       Header: "id",
@@ -77,28 +79,34 @@ const TechsetCol = (renewState: any) => {
       },
     },
     {
-      Header: "Name",
-      accessor: "name",
+      Header: "Icon",
+      accessor: "icon_id",
       Cell: ({ row, value }: any) => {
         return (
-          <input
-            className="c-table-input"
+          <select
             ref={addTORef}
-            name={"name" + row.original.id}
+            name={"icon" + row.original.id}
+            className="c-table-input"
             defaultValue={value}
-          />
+          >
+            {icons.map((icon: any) => (
+              <option key={icon.id} value={icon.id}>
+                {icon.name}
+              </option>
+            ))}
+          </select>
         );
       },
     },
     {
-      Header: "Extra",
-      accessor: "extra",
+      Header: "Link",
+      accessor: "link",
       Cell: ({ row, value }: any) => {
         return (
           <input
             className="c-table-input"
             ref={addTORef}
-            name={"extra" + row.original.id}
+            name={"link" + row.original.id}
             defaultValue={value}
           />
         );
@@ -125,4 +133,4 @@ const TechsetCol = (renewState: any) => {
   return columns;
 };
 
-export default TechsetCol;
+export default LinkCol;

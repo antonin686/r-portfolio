@@ -249,8 +249,8 @@ p {
 
 .c-input {
   box-sizing: border-box;
-  background: #192734;
-  border: 1px solid #164d56;
+  background: var(--secondaryColor);
+  border: 1px solid var(--borderColor);
   color: white;
   width: 100%;
   padding: 0.75rem;
@@ -261,8 +261,8 @@ p {
 
 .c-table-input{
   box-sizing: border-box;
-  background: #192734;
-  border: 1px solid #164d56;
+  background: var(--secondaryColor);
+  border: 1px solid var(--borderColor);
   color: white;
   width: 100%;
   padding: 0.75rem;
@@ -270,6 +270,7 @@ p {
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
 }
+
 
 textarea.c-input {
   resize: vertical;

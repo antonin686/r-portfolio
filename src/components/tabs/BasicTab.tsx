@@ -20,24 +20,18 @@ type Inputs = {
   extra_title: string;
   extra_body: string;
 };
-
-function BasicTab({
-  header_title,
-  header_body,
-  img_path,
-  main_title,
-  main_body,
-  extra_title,
-  extra_body,
-}: IpageInfo) {
+interface props {
+  pageInfo: any;
+}
+function BasicTab({ pageInfo }: props) {
   const methods = useForm<Inputs>({
     defaultValues: {
-      header_title: header_title,
-      header_body: header_body,
-      main_title: main_title,
-      main_body: main_body,
-      extra_title: extra_title,
-      extra_body: extra_body,
+      header_title: pageInfo.header_title,
+      header_body: pageInfo.header_body,
+      main_title: pageInfo.main_title,
+      main_body: pageInfo.main_body,
+      extra_title: pageInfo.extra_title,
+      extra_body: pageInfo.extra_body,
     },
   });
 
@@ -72,8 +66,8 @@ function BasicTab({
             <div>
               <ModalImage
                 className="c-form-img"
-                small={img_path}
-                large={img_path}
+                small={pageInfo.img_path}
+                large={pageInfo.img_path}
               />
             </div>
           </DivRow>

@@ -1,14 +1,21 @@
-// const hostname = "https://portfolio.api.antoninislam.com";
+// const hostnameAPI = "https://portfolio.api.antoninislam.com";
 const hostname = "http://localhost:7000";
-export const homePageUrl: string = `${hostname}/api/pageinfo/defaultPage`;
-export const projectsUrl: string = `${hostname}/api/projects`;
+const hostnameAPI = "http://localhost:7000/api";
+export const homePageUrl: string = `${hostnameAPI}/pageinfo/defaultPage`;
+export const projectsUrl: string = `${hostnameAPI}/projects`;
+export const contactActionUrl: string = `${hostnameAPI}/contacts/create`;
+export const loginActionUrl: string = `${hostnameAPI}/login`;
+export const sidebarInfoUrl: string = `${hostnameAPI}/pageinfo/sldebarInfo`;
+export const pagesUpdateUrl: string = `${hostnameAPI}/pages/update`;
+export const techsetsCreateUrl: string = `${hostnameAPI}/techsets/create`;
+export const techsetsUpdateUrl: string = `${hostnameAPI}/techsets/update`;
+export const techsetsDeleteUrl: string = `${hostnameAPI}/techsets/delete`;
+export const techsetsPageUrl: string = `${hostnameAPI}/techsets/page/`;
+export const iconsIndexUrl: string = `${hostnameAPI}/icons`;
+export const finderLinkCreateUrl: string = `${hostnameAPI}/finderlinks/create`;
+export const finderLinkUpdateUrl: string = `${hostnameAPI}/finderlinks/update/`;
+export const finderLinkDeleteUrl: string = `${hostnameAPI}/finderlinks/delete/`;
+
+
 export const resumeUrl: string = `${hostname}/uploads/resume.pdf`;
 export const iconsUrl: string = `${hostname}/uploads/icons/`;
-export const contactActionUrl: string = `${hostname}/api/contacts/create`;
-export const loginActionUrl: string = `${hostname}/api/login`;
-export const sidebarInfoUrl: string = `${hostname}/api/pageinfo/sldebarInfo`;
-export const pagesUpdateUrl: string = `${hostname}/api/pages/update`;
-export const techsetsCreateUrl: string = `${hostname}/api/techsets/create`;
-export const techsetsUpdateUrl: string = `${hostname}/api/techsets/update`;
-export const techsetsDeleteUrl: string = `${hostname}/api/techsets/delete`;
-export const techsetsPageUrl: string = `${hostname}/api/techsets/page/`;
