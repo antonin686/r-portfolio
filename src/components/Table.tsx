@@ -6,9 +6,15 @@ interface Iprops {
   columns: any;
   data: any;
   clickRedirectURL?: string;
+  trClickHandler?: any;
 }
 
-function Table({ columns: COLUMNS, data: DATA, clickRedirectURL }: Iprops) {
+function Table({
+  columns: COLUMNS,
+  data: DATA,
+  clickRedirectURL,
+  trClickHandler,
+}: Iprops) {
   const columns = useMemo(() => COLUMNS, [COLUMNS]);
   const data = useMemo(() => DATA, [DATA]);
   const history = useHistory();
@@ -43,13 +49,19 @@ function Table({ columns: COLUMNS, data: DATA, clickRedirectURL }: Iprops) {
       </div>
     );
   }, []);
-
-  const clickHandler = (event: React.MouseEvent<HTMLElement>) => {
-    const id = event.currentTarget.firstChild?.textContent;
-    if (clickRedirectURL && id) {
-      history.push(clickRedirectURL + id);
-    }
-  };
+  let clickHandler: any;
+  if (trClickHandler) {
+    clickHandler = trClickHandler;
+  } else if (clickRedirectURL) {
+    clickHandler = (event: React.MouseEvent<HTMLElement>) => {
+      const id = event.currentTarget.firstChild?.textContent;
+      if (clickRedirectURL && id) {
+        history.push(clickRedirectURL + id);
+      }
+    };
+  }else{
+    clickHandler = undefined;
+  }
 
   return (
     <div>
@@ -74,7 +86,7 @@ function Table({ columns: COLUMNS, data: DATA, clickRedirectURL }: Iprops) {
             prepareRow(row);
             return (
               <tr
-                onClick={clickRedirectURL ? clickHandler : undefined}
+                onClick={clickHandler}
                 {...row.getRowProps()}
               >
                 {row.cells.map((cell: any) => {
