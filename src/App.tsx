@@ -14,7 +14,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/admin/Dashboard";
 import HomePage from "./pages/admin/HomePage";
 import ProjectIndex from "./pages/projects/Index";
-import ProjectShow from "./pages/projects/Show";
+import ProjectEdit from "./pages/projects/Edit";
 
 function App() {
   return (
@@ -25,12 +25,12 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/contact" component={Contact} />
-            <Route path="/projects/:id" component={PorjectDetails} />
+            <Route exact path="/projects/:id" component={PorjectDetails} />
             <Route exact path="/admin" component={Login} />
             <PrivateRoute path="/admin/dashboard" component={Dashboard} />
             <PrivateRoute path="/admin/home-page" component={HomePage} />
             <PrivateRoute exact path="/admin/projects" component={ProjectIndex} />
-            <PrivateRoute path="/admin/projects/:id" component={ProjectShow} />
+            <PrivateRoute path="/admin/projects/edit/:id" component={ProjectEdit} />
           </Switch>
         </BrowserRouter>
       </AuthProvider>

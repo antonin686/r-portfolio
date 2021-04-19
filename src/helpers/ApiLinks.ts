@@ -2,11 +2,12 @@
 const hostname = "http://localhost:7000";
 const hostnameAPI = "http://localhost:7000/api";
 export const homePageUrl: string = `${hostnameAPI}/pageinfo/defaultPage`;
+export const projectPageUrl: string = `${hostnameAPI}/pageinfo/projectPage/`;
 export const projectsUrl: string = `${hostnameAPI}/projects`;
 export const contactActionUrl: string = `${hostnameAPI}/contacts/create`;
 export const loginActionUrl: string = `${hostnameAPI}/login`;
 export const sidebarInfoUrl: string = `${hostnameAPI}/pageinfo/sldebarInfo`;
-export const pagesUpdateUrl: string = `${hostnameAPI}/pages/update`;
+export const pagesUpdateUrl: string = `${hostnameAPI}/pages/update/`;
 export const techsetsCreateUrl: string = `${hostnameAPI}/techsets/create`;
 export const techsetsUpdateUrl: string = `${hostnameAPI}/techsets/update`;
 export const techsetsDeleteUrl: string = `${hostnameAPI}/techsets/delete`;

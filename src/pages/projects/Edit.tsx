@@ -1,17 +1,19 @@
+import { useParams } from "react-router-dom";
+import useGetFetch from "./../../hooks/useGetFetch";
 import useNavTabs from "../../hooks/useNavTabs";
+import { projectPageUrl, iconsIndexUrl } from "./../../helpers/ApiLinks";
 import MacNav from "./../../components/MacNav";
 import Sidebar from "./../../components/Sidebar";
-import { homePageUrl, iconsIndexUrl } from "../../helpers/ApiLinks";
-import useGetFetch from "../../hooks/useGetFetch";
 import CustomLoader from "../../components/CustomLoader";
 import BasicTab from "../../components/tabs/BasicTab";
 import TechsetsTab from "../../components/tabs/TechsetsTab";
 import LinksTab from "../../components/tabs/LinksTab";
-
-function HomePage() {
+function Edit() {
+  const { id } = useParams<any>();
+  const url = `${projectPageUrl}/${id}`;
+  const [projectPage, renewState]: any = useGetFetch(url);
   const tabItems = ["Basic", "Techsets", "Links"];
   const { tab, Tabs } = useNavTabs(tabItems, "Basic");
-  const [homePage, renewState]: any = useGetFetch(homePageUrl);
   const [icons] = useGetFetch(iconsIndexUrl);
   return (
     <div>
@@ -26,26 +28,24 @@ function HomePage() {
               <Tabs />
             </div>
             <div className="c-card-body">
-              {!homePage || !icons ? (
+              {!projectPage || !icons ? (
                 <CustomLoader />
               ) : (
                 <div>
                   {tab === "Basic" && (
-                    <BasicTab
-                      pageInfo={homePage.pageInfo}
-                    />
+                    <BasicTab pageInfo={projectPage.pageInfo} />
                   )}
                   {tab === "Techsets" && (
                     <TechsetsTab
-                      page_id={1}
-                      techsets={homePage.techsets}
+                      page_id={projectPage.pageInfo.id}
+                      techsets={projectPage.techsets}
                       renewState={renewState}
                     />
                   )}
                   {tab === "Links" && (
                     <LinksTab
-                      page_id={1}
-                      data={homePage.finderLinks}
+                      page_id={projectPage.pageInfo.id}
+                      data={projectPage.finderLinks}
                       icons={icons}
                       renewState={renewState}
                     />
@@ -60,4 +60,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Edit;

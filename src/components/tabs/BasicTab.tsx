@@ -5,6 +5,7 @@ import {
   DivRow,
   InputReq,
   Input,
+  Textarea,
   TextareaReq,
   SubmitButton,
 } from "../FormGroup";
@@ -21,8 +22,9 @@ type Inputs = {
   extra_body: string;
 };
 interface props {
-  pageInfo: any;
+  pageInfo: IpageInfo;
 }
+
 function BasicTab({ pageInfo }: props) {
   const methods = useForm<Inputs>({
     defaultValues: {
@@ -36,7 +38,7 @@ function BasicTab({ pageInfo }: props) {
   });
 
   const onSubmit = async (data: Inputs) => {
-    const result = await fetchPostRes(pagesUpdateUrl + `/1`, data);
+    const result = await fetchPostRes(pagesUpdateUrl + pageInfo.id, data);
     if (result === 200) {
       succMsg("Basic Info Updated");
     } else {
@@ -55,7 +57,7 @@ function BasicTab({ pageInfo }: props) {
           </DivRow>
           <TextareaReq name="header_body" className="c-input" rows={2} />
           <TextareaReq name="main_body" className="c-input" rows={2} />
-          <TextareaReq name="extra_body" className="c-input" rows={2} />
+          <Textarea name="extra_body" className="c-input" rows={2} />
           <DivRow formMethods={methods} className="c-form-row-2 grid-center">
             <Input
               type="file"

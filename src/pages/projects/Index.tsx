@@ -24,7 +24,7 @@ function Index() {
                   <Table
                     columns={ProjectCol}
                     data={projects}
-                    clickRedirectURL={"/admin/projects/"}
+                    clickRedirectURL={"/admin/projects/edit/"}
                   />
                 )}
               </div>
