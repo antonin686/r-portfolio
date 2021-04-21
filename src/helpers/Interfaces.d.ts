@@ -67,6 +67,16 @@ interface Iauth {
   type: string;
 }
 
+interface IContact {
+  id: string,
+  name: string,
+  email: string,
+  subject: string,
+  message: string,
+  created_at: string,
+  ip_address: string
+}
+
 export {
   IpageInfo,
   IfinderLink,
@@ -76,4 +86,5 @@ export {
   IprojectFull,
   IformNames,
   Iauth,
+  IContact
 };

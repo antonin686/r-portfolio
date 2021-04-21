@@ -133,6 +133,15 @@ p {
   background: var(--primaryColor);
 }
 
+.bg-secondary {
+  background: var(--secondaryColor);
+}
+.divider {
+  background: gray !important;
+  margin-top: .25rem!important;
+  margin-bottom: .25rem!important;
+}
+
 .grid-center {
   justify-content: center;
   align-items: center;
