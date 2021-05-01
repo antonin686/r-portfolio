@@ -13,16 +13,27 @@ type Inputs = {
 };
 
 function Contact() {
-  const methods = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Inputs>();
   const onSubmit = async (data: Inputs) => {
     const result = await fetchPostRes(contactActionUrl, data);
     if (result === 200) {
       succMsg("Your Message Has Been Sent", () => {
-        methods.reset();
+        reset();
       });
     } else {
       errMsg("An Error Occurred");
     }
+  };
+
+  const submitter = {
+    handleSubmit: handleSubmit,
+    handler: onSubmit,
+    btnName: "Send"
   };
 
   return (
@@ -33,7 +44,7 @@ function Contact() {
         <div className="container">
           <div className="contact-form-wrapper">
             <div className="title-lg text-center">Get In Touch</div>
-            <Form formMethods={methods} handler={onSubmit} submitBtn="Send">
+            <Form register={register} errors={errors} submitter={submitter}>
               <Input name="name" rule={{ required: true }} />
               <Input
                 name="email"

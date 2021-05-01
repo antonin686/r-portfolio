@@ -1,18 +1,10 @@
 import ModalImage from "react-modal-image";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  DivRow,
-  InputReq,
-  Input,
-  Textarea,
-  TextareaReq,
-  SubmitButton,
-} from "../FormGroup";
+import { Form, InputReq, Input, Textarea, TextareaReq } from "../FormGroup";
 import { succMsg, errMsg, fetchPostRes } from "../../helpers/FormHelper";
 import { pagesUpdateUrl } from "../../helpers/ApiLinks";
 import { IpageInfo } from "../../helpers/Interfaces";
-
+import { Button } from "@material-ui/core";
 type Inputs = {
   header_title: string;
   header_body: string;
@@ -28,7 +20,11 @@ interface props {
 }
 
 function BasicTab({ pageInfo, renewState }: props) {
-  const methods = useForm<Inputs>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>({
     defaultValues: {
       header_title: pageInfo.header_title,
       header_body: pageInfo.header_body,
@@ -41,11 +37,11 @@ function BasicTab({ pageInfo, renewState }: props) {
   });
 
   const onSubmit = async (data: Inputs) => {
-    if (data.img.length === 0) delete data.img;
+    if (!data.img) delete data.img;
     else data.img = data.img[0];
     const result = await fetchPostRes(pagesUpdateUrl + pageInfo.id, data);
     //console.log(result);
-    
+
     if (result === 200) {
       succMsg("Basic Info Updated");
       renewState();
@@ -54,19 +50,24 @@ function BasicTab({ pageInfo, renewState }: props) {
     }
   };
 
+  const submitter = {
+    handleSubmit: handleSubmit,
+    handler: onSubmit,
+  };
+
   return (
     <div className="c-tab-wrapper">
       <div className="c-form">
-        <Form formMethods={methods} handler={onSubmit}>
-          <DivRow formMethods={methods} className="c-form-row-3">
+        <Form register={register} errors={errors} submitter={submitter}>
+          <div className="c-form-row-3">
             <InputReq name="header_title" className="c-input" />
             <InputReq name="main_title" className="c-input" />
             <InputReq name="extra_title" className="c-input" />
-          </DivRow>
+          </div>
           <TextareaReq name="header_body" className="c-input" rows={2} />
           <TextareaReq name="main_body" className="c-input" rows={2} />
           <Textarea name="extra_body" className="c-input" rows={2} />
-          <DivRow formMethods={methods} className="c-form-row-2 grid-center">
+          <div className="c-form-row-2 grid-center">
             <Input
               type="file"
               label="Upload Image"
@@ -80,8 +81,11 @@ function BasicTab({ pageInfo, renewState }: props) {
                 large={pageInfo.img_path}
               />
             </div>
-          </DivRow>
-          <SubmitButton btnName="Update Information" className="c-form-btn" />
+          </div>
+
+          <Button variant="contained" type="submit" color="primary">
+            Update Information
+          </Button>
         </Form>
       </div>
     </div>

@@ -40,7 +40,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
     let title = titleEl.current.value;
     let image = imgEl.current.files[0];
     if (!title) {
-      title 
+       
     }
     let data = {
       title: title,
