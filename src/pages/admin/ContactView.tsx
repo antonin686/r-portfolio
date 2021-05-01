@@ -25,7 +25,7 @@ function ContactMessages() {
     if (id) {
       const messageDetails = await fetchGetRes(contactShowUrl + id);
       setMessage(messageDetails);
-      console.log(messageDetails);
+      //console.log(messageDetails);
       handleOpen();
     }
   };
@@ -51,6 +51,7 @@ function ContactMessages() {
           <div className="c-card">
             <div className="c-card-header">Contact Messages</div>
             <div className="c-card-body">
+              <div className="c-tab-wrapper">
               <div className="responsive">
                 {messages && (
                   <Table
@@ -59,6 +60,7 @@ function ContactMessages() {
                     trClickHandler={trClickHandler}
                   />
                 )}
+              </div>
               </div>
             </div>
           </div>

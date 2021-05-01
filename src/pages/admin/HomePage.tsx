@@ -10,7 +10,7 @@ import LinksTab from "../../components/tabs/LinksTab";
 
 function HomePage() {
   const tabItems = ["Basic", "Techsets", "Links"];
-  const { tab, Tabs } = useNavTabs(tabItems, "Basic");
+  const { tab, Tabs} = useNavTabs(tabItems, "Basic");
   const [homePage, renewState]: any = useGetFetch(homePageUrl);
   const [icons] = useGetFetch(iconsIndexUrl);
   return (
@@ -33,6 +33,7 @@ function HomePage() {
                   {tab === "Basic" && (
                     <BasicTab
                       pageInfo={homePage.pageInfo}
+                      renewState={renewState}
                     />
                   )}
                   {tab === "Techsets" && (

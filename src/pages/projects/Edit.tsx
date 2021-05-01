@@ -8,11 +8,12 @@ import CustomLoader from "../../components/CustomLoader";
 import BasicTab from "../../components/tabs/BasicTab";
 import TechsetsTab from "../../components/tabs/TechsetsTab";
 import LinksTab from "../../components/tabs/LinksTab";
+import ImagesTab from "../../components/tabs/ImagesTab";
 function Edit() {
   const { id } = useParams<any>();
   const url = `${projectPageUrl}/${id}`;
   const [projectPage, renewState]: any = useGetFetch(url);
-  const tabItems = ["Basic", "Techsets", "Links"];
+  const tabItems = ["Basic", "Techsets", "Links", "Images"];
   const { tab, Tabs } = useNavTabs(tabItems, "Basic");
   const [icons] = useGetFetch(iconsIndexUrl);
   return (
@@ -33,7 +34,10 @@ function Edit() {
               ) : (
                 <div>
                   {tab === "Basic" && (
-                    <BasicTab pageInfo={projectPage.pageInfo} />
+                    <BasicTab
+                      pageInfo={projectPage.pageInfo}
+                      renewState={renewState}
+                    />
                   )}
                   {tab === "Techsets" && (
                     <TechsetsTab
@@ -47,6 +51,13 @@ function Edit() {
                       page_id={projectPage.pageInfo.id}
                       data={projectPage.finderLinks}
                       icons={icons}
+                      renewState={renewState}
+                    />
+                  )}
+                  {tab === "Images" && (
+                    <ImagesTab
+                      page_id={projectPage.pageInfo.id}
+                      data={projectPage.images}
                       renewState={renewState}
                     />
                   )}

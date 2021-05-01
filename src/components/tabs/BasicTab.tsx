@@ -20,12 +20,14 @@ type Inputs = {
   main_body: string;
   extra_title: string;
   extra_body: string;
+  img: any;
 };
 interface props {
   pageInfo: IpageInfo;
+  renewState: any;
 }
 
-function BasicTab({ pageInfo }: props) {
+function BasicTab({ pageInfo, renewState }: props) {
   const methods = useForm<Inputs>({
     defaultValues: {
       header_title: pageInfo.header_title,
@@ -34,13 +36,19 @@ function BasicTab({ pageInfo }: props) {
       main_body: pageInfo.main_body,
       extra_title: pageInfo.extra_title,
       extra_body: pageInfo.extra_body,
+      img: null,
     },
   });
 
   const onSubmit = async (data: Inputs) => {
+    if (data.img.length === 0) delete data.img;
+    else data.img = data.img[0];
     const result = await fetchPostRes(pagesUpdateUrl + pageInfo.id, data);
+    //console.log(result);
+    
     if (result === 200) {
       succMsg("Basic Info Updated");
+      renewState();
     } else {
       errMsg("An Error Occurred");
     }

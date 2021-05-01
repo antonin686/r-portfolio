@@ -15,6 +15,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import HomePage from "./pages/admin/HomePage";
 import ProjectIndex from "./pages/projects/Index";
 import ProjectEdit from "./pages/projects/Edit";
+import ProjectCreate from "./pages/projects/Create";
 import ContactView from "./pages/admin/ContactView";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <PrivateRoute path="/admin/home-page" component={HomePage} />
             <PrivateRoute exact path="/admin/projects" component={ProjectIndex} />
             <PrivateRoute path="/admin/projects/edit/:id" component={ProjectEdit} />
+            <PrivateRoute path="/admin/projects/create" component={ProjectCreate} />
             <PrivateRoute path="/admin/contacts" component={ContactView} />
           </Switch>
         </BrowserRouter>
