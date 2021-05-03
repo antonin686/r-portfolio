@@ -5,6 +5,7 @@ import Table from "./../Table";
 import TechsetCol from "./../../helpers/columns/TechsetCol";
 import { fetchPostRes, succMsg, errMsg } from "./../../helpers/FormHelper";
 import { techsetsCreateUrl } from "./../../helpers/ApiLinks";
+
 interface props {
   page_id: number;
   techsets: any;

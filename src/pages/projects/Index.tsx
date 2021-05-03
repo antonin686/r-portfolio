@@ -12,11 +12,7 @@ function Index() {
   const handleAddclick = () => {
     history.push("/admin/projects/create");
   };
-  const paperStyle = {
-    style: {
-      backgroundColor: "#15202b",
-    },
-  };
+  
   return (
     <div>
       <MacNav />

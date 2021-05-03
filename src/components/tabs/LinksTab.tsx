@@ -1,12 +1,6 @@
-import { useState, useRef } from "react";
-import {
-  Button,
-  Grid,
-  Dialog,
-  DialogActions,
-  DialogTitle,
-  DialogContent,
-} from "@material-ui/core";
+import { useRef } from "react";
+import { Button, Grid } from "@material-ui/core";
+import useDialog from "./../../hooks/useDialog";
 import Table from "./../Table";
 import LinkCol from "./../../helpers/columns/LinkCol";
 import { fetchPostRes, succMsg, errMsg } from "./../../helpers/FormHelper";
@@ -20,17 +14,17 @@ interface props {
 }
 
 function LinksTab({ page_id, data, icons, renewState }: props) {
-  const [open, setOpen] = useState<boolean>(false);
-  const columns = LinkCol(icons, renewState);
   const iconEl = useRef<any>(null);
   const linkEl = useRef<any>(null);
-  const [linkErr, setLinkErr] = useState(false);
-  const submitHandler = async () => {
+  const linkErrEl = useRef<any>(null);
+  const columns = LinkCol(icons, renewState);
+
+  const onSubmit = async () => {
     if (!linkEl.current.value) {
-      setLinkErr(true);
+      linkErrEl.current.style.display = "block";
       return;
     } else {
-      setLinkErr(false);
+      linkErrEl.current.style.display = "none";
     }
     let data = {
       page_id: page_id,
@@ -38,31 +32,49 @@ function LinksTab({ page_id, data, icons, renewState }: props) {
       link: linkEl.current.value,
     };
     let result = await fetchPostRes(finderLinkCreateUrl, data);
-    
+
     if (result === 200) {
-      handleClose();
+      setCreateDialogOpen(false);
       renewState();
       succMsg("Techset Updated");
     } else {
       errMsg("Error Occured");
     }
   };
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const paperStyle = {
-    style: {
-      backgroundColor: "#15202b",
-    },
-  };
+
+  const DialogContent = () => (
+    <div>
+      <label className="text-primary">Name</label>
+      <select ref={iconEl} className="c-table-input">
+        {icons.map((icon: any) => (
+          <option key={icon.id} value={icon.id}>
+            {icon.name}
+          </option>
+        ))}
+      </select>
+      <label className="text-primary">Link</label>
+      <input ref={linkEl} className="c-input" />
+      <div ref={linkErrEl} className="text-danger hidden">
+        *Link Cant Be Empty!
+      </div>
+    </div>
+  );
+
+  const [setCreateDialogOpen, CreateDialog]: any = useDialog({
+    Content: DialogContent,
+    title: "Add New Link",
+    submit: { handler: onSubmit, text: "Submit" },
+  });
+
   return (
     <div className="c-tab-wrapper">
       <Grid container spacing={1}>
         <Grid item>
-          <Button variant="contained" color="primary" onClick={handleOpen}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setCreateDialogOpen(true)}
+          >
             Add New Link
           </Button>
         </Grid>
@@ -70,35 +82,7 @@ function LinksTab({ page_id, data, icons, renewState }: props) {
       <div className="responsive">
         <Table columns={columns} data={data} />
       </div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        PaperProps={paperStyle}
-        fullWidth
-      >
-        <DialogTitle className="text-primary">Add New Tech</DialogTitle>
-        <DialogContent dividers>
-          <label className="text-primary">Name</label>
-          <select ref={iconEl} className="c-table-input">
-            {icons.map((icon: any) => (
-              <option key={icon.id} value={icon.id}>
-                {icon.name}
-              </option>
-            ))}
-          </select>
-          <label className="text-primary">Link</label>
-          <input ref={linkEl} className="c-input" />
-          {linkErr && <div className="text-danger">*Link Cant Be Empty!</div>}
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={handleClose} color="secondary">
-            Cancel
-          </Button>
-          <Button variant="contained" onClick={submitHandler} color="primary">
-            Submit
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <CreateDialog />
     </div>
   );
 }
