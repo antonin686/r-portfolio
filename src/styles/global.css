@@ -138,8 +138,8 @@ p {
 }
 .divider {
   background: gray !important;
-  margin-top: .25rem!important;
-  margin-bottom: .25rem!important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
 }
 
 .grid-center {
@@ -215,6 +215,10 @@ p {
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Forms */
 .c-form {
   border: 1px solid #164d56;
@@ -267,8 +271,11 @@ p {
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
 }
+.c-label {
+  color: var(--textColor);
+}
 
-.c-table-input{
+.c-table-input {
   box-sizing: border-box;
   background: var(--secondaryColor);
   border: 1px solid var(--borderColor);
@@ -279,7 +286,6 @@ p {
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
 }
-
 
 textarea.c-input {
   resize: vertical;
@@ -364,7 +370,6 @@ textarea.c-input {
 .responsive {
   overflow-x: auto;
 }
-
 
 @media (min-width: 768px) {
   .table-responsive-md {

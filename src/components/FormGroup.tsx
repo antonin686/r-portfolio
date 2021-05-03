@@ -3,7 +3,7 @@ interface IformProps {
   children: any;
   register: any;
   errors: any;
-  submitter: any;
+  submitter?: any;
 }
 const Form = ({
   children,
@@ -47,7 +47,7 @@ const Form = ({
   );
   const ProcessedInput = ({ child }: any) => (
     <div>
-      <label htmlFor={child.props.name}>
+      <label htmlFor={child.props.name} className="c-label">
         {child.props.label
           ? (label = child.props.label)
           : (label = convLabel(child.props.name))}

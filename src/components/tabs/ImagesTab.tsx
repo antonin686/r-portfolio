@@ -66,6 +66,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
       <input type="file" ref={imgEl} className="c-input" />
     </div>
   );
+  
 
   const [setCreateDialogOpen, CreateDialog]: any = useDialog({
     Content: DialogContent,
