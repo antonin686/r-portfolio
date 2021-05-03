@@ -3,8 +3,8 @@ import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
 
-import { fetchGetRes, fetchPostRes, succMsg, errMsg } from "./../FormHelper";
-import { techsetsUpdateUrl, techsetsDeleteUrl } from "./../ApiLinks";
+import { fetchGetRes, succMsg, errMsg } from "./../FormHelper";
+import { imageDeleteUrl } from "./../ApiLinks";
 import Swal from "sweetalert2";
 import ModalImage from "react-modal-image";
 interface Props {
@@ -33,12 +33,11 @@ const ImageCol = (renewState: any, updateHandler: any) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         let response = await fetchGetRes(
-          techsetsDeleteUrl + `/${row.original.id}`
+          imageDeleteUrl + `/${row.original.id}`
         );
-
         if (response === 200) {
           renewState();
-          Swal.fire("Deleted!", "Successfully Deleted.", "success");
+          succMsg("Successfully Deleted");
         } else {
           errMsg("An Error Occurred");
         }

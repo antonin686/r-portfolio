@@ -4,7 +4,7 @@ import Table from "./../Table";
 import ImageCol from "./../../helpers/columns/ImageCol";
 import useDialog from "./../../hooks/useDialog";
 import { fetchPostRes, succMsg, errMsg } from "./../../helpers/FormHelper";
-import { imageUpdateUrl } from "./../../helpers/ApiLinks";
+import { imageCreateUrl, imageUpdateUrl } from "./../../helpers/ApiLinks";
 
 interface props {
   page_id: number;
@@ -13,35 +13,52 @@ interface props {
 }
 
 function ImagesTab({ page_id, data, renewState }: props) {
-
   const titleEl = useRef<any>(null);
   const imgEl = useRef<any>(null);
+  const titleErrEl = useRef<any>(null);
+  const imgErrEl = useRef<any>(null);
   const [rowData, setRowData] = useState<any>(null);
-  const [error, setError] = useState<any>(null);
   const updateHandler = async (row: any) => {
     setRowData(row.original);
     setUpdateDialogOpen(true);
   };
+  const columns = ImageCol(renewState, updateHandler);
+
   const createSubmitHandler = async () => {
+    let title = titleEl.current.value;
+    let image = imgEl.current.files[0];
+    if (!title) {
+      titleErrEl.current.style.display = "block";
+      return;
+    } else titleErrEl.current.style.display = "none";
+    if (!image) {
+      imgErrEl.current.style.display = "block";
+      return;
+    } else imgErrEl.current.style.display = "none";
     let data = {
+      page_id: page_id,
       title: titleEl.current.value,
       image: imgEl.current.files[0],
     };
-    // let result = await fetchPostRes(imageUpdateUrl + rowData?.id, data);
-    // if (result === 200) {
-    //   succMsg("Image Details Updated");
-    //   setUpdateDialogOpen(false);
-    //   renewState();
-    // } else {
-    //   errMsg(result);
-    // }
+    let result = await fetchPostRes(imageCreateUrl, data);
+    if (result === 200) {
+      succMsg("Image Details Updated");
+      setCreateDialogOpen(false);
+      renewState();
+    } else {
+      errMsg(result);
+    }
   };
+  
   const updateSubmitHandler = async () => {
     let title = titleEl.current.value;
     let image = imgEl.current.files[0];
     if (!title) {
-       
-    }
+      titleErrEl.current.style.display = "block";
+      return;
+    } else titleErrEl.current.style.display = "none";
+
+    imgErrEl.current.style.display = "none";
     let data = {
       title: title,
       image: image,
@@ -56,22 +73,26 @@ function ImagesTab({ page_id, data, renewState }: props) {
       errMsg(result);
     }
   };
-  const columns = ImageCol(renewState, updateHandler);
 
   const DialogContent = () => (
     <div>
       <label className="text-primary">Title</label>
       <input ref={titleEl} className="c-input" defaultValue={rowData?.title} />
+      <div ref={titleErrEl} className="text-danger hidden">
+        *Title Cant Be Empty!
+      </div>
       <label className="text-primary">Image</label>
       <input type="file" ref={imgEl} className="c-input" />
+      <div ref={imgErrEl} className="text-danger hidden">
+        *Image Cant Be Empty!
+      </div>
     </div>
   );
-  
 
   const [setCreateDialogOpen, CreateDialog]: any = useDialog({
     Content: DialogContent,
     title: "Add New Image",
-    submit: { handler: updateSubmitHandler, text: "Submit" },
+    submit: { handler: createSubmitHandler, text: "Submit" },
   });
 
   const [setUpdateDialogOpen, UpdateDialog]: any = useDialog({
