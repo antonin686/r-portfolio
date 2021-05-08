@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Divider, Grid } from "@material-ui/core";
 import useDialog from "./../../hooks/useDialog";
 import Table from "./../Table";
 import LinkCol from "./../../helpers/columns/LinkCol";

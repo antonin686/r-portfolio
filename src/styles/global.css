@@ -214,6 +214,13 @@ p {
   color: gray;
   cursor: pointer;
 }
+.c-submit-btn {
+  margin-top: 0.25rem !important;
+}
+
+.c-w-50 {
+  width: 50% !important;
+}
 
 .hidden {
   display: none;
@@ -239,6 +246,8 @@ p {
 }
 
 .c-form-row-2,
+.c-form-row-1-2,
+.c-form-row-2-1,
 .c-form-row-3 {
   display: grid;
   grid-template-columns: 1fr;
@@ -271,6 +280,9 @@ p {
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
 }
+.c-input:hover{
+  border: 1px solid var(--frontLineColor) !important;
+}
 .c-label {
   color: var(--textColor);
 }
@@ -291,7 +303,27 @@ textarea.c-input {
   resize: vertical;
 }
 
+input[type="file"].c-input {
+  padding: 0.58rem;
+}
+
+input[type="file"].c-input::file-selector-button {
+  border: 0;
+  border-radius: 4px;
+  padding: 0.25rem;
+}
+
 @media (min-width: 768px) {
+  .c-form-row-1-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+  }
+  .c-form-row-2-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+  }
   .c-form-row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -388,6 +420,26 @@ textarea.c-input {
 .btn-link:hover {
   color: gray;
   cursor: pointer;
+}
+
+/*Tags*/
+.btn-chip {
+  margin-top: 1.3rem !important;
+}
+.tags-array {
+  width: 100%;
+  margin-top: 1.3rem !important;
+}
+
+.tags {
+  background: var(--secondaryColor) !important;
+  color: var(--textColor) !important;
+  border: 2px solid var(--borderColor) !important;
+  margin-left: 0.5rem !important;
+}
+
+.tags:hover {
+  border: 2px solid var(--frontLineColor) !important;
 }
 
 /* React-Elastic-Carousel */

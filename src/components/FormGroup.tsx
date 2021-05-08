@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "@material-ui/core";
+
 interface IformProps {
   children: any;
   register: any;
@@ -77,7 +79,16 @@ const Form = ({
       ) : (
         children
       )}
-      {submitter.btnName && <button type="submit">{submitter.btnName}</button>}
+      {submitter.btnName && (
+        <Button
+          variant="contained"
+          type="submit"
+          color="primary"
+          className="c-submit-btn"
+        >
+          {submitter.btnName}
+        </Button>
+      )}
     </form>
   );
 };
@@ -106,4 +117,17 @@ const TextareaReq = ({ register, name, label, ...rest }: any) => {
   return <textarea {...register(name, rule)} {...rest}></textarea>;
 };
 
-export { Form, Input, InputPass, InputReq, Textarea, TextareaReq };
+const InputFileReq = ({ register, name, label, ...rest }: any) => {
+  let rule = { required: true };
+  return <input type="file" {...register(name, rule)} {...rest} />;
+};
+
+export {
+  Form,
+  Input,
+  InputPass,
+  InputReq,
+  Textarea,
+  TextareaReq,
+  InputFileReq,
+};

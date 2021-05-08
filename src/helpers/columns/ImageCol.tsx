@@ -7,19 +7,10 @@ import { fetchGetRes, succMsg, errMsg } from "./../FormHelper";
 import { imageDeleteUrl } from "./../ApiLinks";
 import Swal from "sweetalert2";
 import ModalImage from "react-modal-image";
-interface Props {
-  renewState: any;
-  updateHandler: any;
-}
+
 const ImageCol = (renewState: any, updateHandler: any) => {
   const inputRefs: any = useRef([]);
   inputRefs.current = [];
-
-  const addTORef = (el: any) => {
-    if (el && !inputRefs.current.includes(el)) {
-      inputRefs.current.push(el);
-    }
-  };
 
   const deleteHandler = async (row: any) => {
     Swal.fire({

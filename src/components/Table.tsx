@@ -59,7 +59,7 @@ function Table({
         history.push(clickRedirectURL + id);
       }
     };
-  }else{
+  } else {
     clickHandler = undefined;
   }
 
@@ -85,10 +85,7 @@ function Table({
           {rows.map((row: any) => {
             prepareRow(row);
             return (
-              <tr
-                onClick={clickHandler}
-                {...row.getRowProps()}
-              >
+              <tr onClick={clickHandler} {...row.getRowProps()}>
                 {row.cells.map((cell: any) => {
                   return (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -99,6 +96,9 @@ function Table({
           })}
         </tbody>
       </table>
+      {!DATA.length && (
+        <div className="text-center">No data available in table.</div>
+      )}
     </div>
   );
 }

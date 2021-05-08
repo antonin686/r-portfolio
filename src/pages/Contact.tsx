@@ -54,7 +54,7 @@ function Contact() {
                 }}
               />
               <Input name="subject" />
-              <Textarea name="message" rule={{ required: true }} row={5} />
+              <Textarea name="message" rule={{ required: true }} rows={5} />
             </Form>
           </div>
         </div>
