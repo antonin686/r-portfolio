@@ -4,7 +4,7 @@ import "./styles/components.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import ScrollToTop from "./helpers/ScrollToTop";
-import { AuthProvider } from "./helpers/AuthProvider";
+import AuthProvider from "./contexts/AuthProvider";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
@@ -31,9 +31,19 @@ function App() {
             <Route exact path="/admin" component={Login} />
             <PrivateRoute path="/admin/dashboard" component={Dashboard} />
             <PrivateRoute path="/admin/home-page" component={HomePage} />
-            <PrivateRoute exact path="/admin/projects" component={ProjectIndex} />
-            <PrivateRoute path="/admin/projects/edit/:id" component={ProjectEdit} />
-            <PrivateRoute path="/admin/projects/create" component={ProjectCreate} />
+            <PrivateRoute
+              exact
+              path="/admin/projects"
+              component={ProjectIndex}
+            />
+            <PrivateRoute
+              path="/admin/projects/edit/:id"
+              component={ProjectEdit}
+            />
+            <PrivateRoute
+              path="/admin/projects/create"
+              component={ProjectCreate}
+            />
             <PrivateRoute path="/admin/contacts" component={ContactView} />
           </Switch>
         </BrowserRouter>

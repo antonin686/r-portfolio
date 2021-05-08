@@ -1,9 +1,9 @@
 import { useState, createContext } from "react";
 import { Iauth } from "./Interfaces";
 
-const AuthContext = createContext({});
+const SnackbarContext = createContext({});
 
-function AuthProvider(props: any) {
+function SnackbarProvider(props: any) {
   const [auth, setAuth] = useState<Iauth>({
     isAuth: false,
     username: "",
@@ -11,10 +11,10 @@ function AuthProvider(props: any) {
   });
 
   return (
-    <AuthContext.Provider value={[auth, setAuth]}>
+    <SnackbarContext.Provider value={[auth, setAuth]}>
       {props.children}
-    </AuthContext.Provider>
+    </SnackbarContext.Provider>
   );
 }
 
-export { AuthContext, AuthProvider };
+export { SnackbarContext, SnackbarProvider };

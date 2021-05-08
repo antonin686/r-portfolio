@@ -1,24 +1,22 @@
 import { useContext } from "react";
-import { AuthContext } from "./../helpers/AuthProvider";
+import { AuthContext } from "../contexts/_Contexts";
+import { AUTH_ACTION } from "./../contexts/Actions";
 import { Iauth } from "./../helpers/Interfaces";
 function useAuth() {
-  const [auth, setAuth] = useContext<any>(AuthContext);
+  const [state, dispatch] = useContext<any>(AuthContext);
+
+  const signIn = (data: Iauth) => {
+    dispatch({ type: AUTH_ACTION.SIGN_IN, payload: data });
+  };
+
+  const signOut = () => {
+    dispatch({ type: AUTH_ACTION.SIGN_OUT });
+  };
+
   return {
-    signIn: (data: Iauth) => {
-      setAuth({
-        isAuth: true,
-        username: data.username,
-        type: data.type,
-      });
-    },
-    signOut: () => {
-      setAuth({
-        isAuth: false,
-        username: "",
-        type: "",
-      });
-    },
-    user: { isAuth: auth.isAuth, username: auth.username, type: auth.type },
+    signIn,
+    signOut,
+    user: state,
   };
 }
 
