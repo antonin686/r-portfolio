@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import useAuth from "./../hooks/useAuth";
-import {snackbar} from "../components/Snackbar";
+import {snackbar} from "../components/PopupManager";
 import { Form, InputReq, InputPass } from "../components/FormGroup";
 import MacNav from "../components/MacNav";
 

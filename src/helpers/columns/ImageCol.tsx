@@ -2,38 +2,15 @@ import { useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
-
-import { fetchGetRes } from "./../FormHelper";
 import { imageDeleteUrl } from "./../ApiLinks";
 import ModalImage from "react-modal-image";
-import { snackbar } from "../../components/Snackbar";
+import { dialog } from "../../components/PopupManager";
 
 const ImageCol = (renewState: any, updateHandler: any) => {
-  const inputRefs: any = useRef([]);
-  inputRefs.current = [];
-
+  
   const deleteHandler = async (row: any) => {
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   text: "You won't be able to revert this!",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes, delete it!",
-    // }).then(async (result) => {
-    //   if (result.isConfirmed) {
-    //     let response = await fetchGetRes(
-    //       imageDeleteUrl + `/${row.original.id}`
-    //     );
-    //     if (response === 200) {
-    //       renewState();
-    //       succMsg("Successfully Deleted");
-    //     } else {
-    //       errMsg("An Error Occurred");
-    //     }
-    //   }
-    // });
+    let url = imageDeleteUrl + row.original.id;
+    dialog.delete(url, renewState)
   };
 
   const columns = [

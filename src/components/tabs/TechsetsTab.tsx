@@ -5,7 +5,7 @@ import Table from "./../Table";
 import TechsetCol from "./../../helpers/columns/TechsetCol";
 import { fetchPostRes } from "./../../helpers/FormHelper";
 import { techsetsCreateUrl } from "./../../helpers/ApiLinks";
-import { snackbar } from "../../components/Snackbar";
+import { snackbar } from "../PopupManager";
 
 interface props {
   page_id: number;
@@ -17,7 +17,6 @@ function TechsetsTab({ page_id, techsets, renewState }: props) {
   const nameEl = useRef<any>(null);
   const extraEl = useRef<any>(null);
   const nameErrEl = useRef<any>(null);
-  const columns = TechsetCol(renewState);
 
   const onSubmit = async () => {
     if (!nameEl.current.value) {
@@ -59,6 +58,8 @@ function TechsetsTab({ page_id, techsets, renewState }: props) {
     title: "Add New Techset",
     submit: { handler: onSubmit, text: "Submit" },
   });
+
+  const columns = TechsetCol(renewState);
 
   return (
     <div>

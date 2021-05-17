@@ -1,6 +1,6 @@
 import ModalImage from "react-modal-image";
 import { useForm } from "react-hook-form";
-import { snackbar } from "../../components/Snackbar";
+import { snackbar } from "../PopupManager";
 import { Form, InputReq, Input, Textarea, TextareaReq } from "../FormGroup";
 import { fetchPostRes } from "../../helpers/FormHelper";
 import { pagesUpdateUrl } from "../../helpers/ApiLinks";

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Button, Grid } from "@material-ui/core";
 import useDialog from "./../../hooks/useDialog";
-import { snackbar } from "../../components/Snackbar";
+import { snackbar } from "../PopupManager";
 import Table from "./../Table";
 import LinkCol from "./../../helpers/columns/LinkCol";
 import { fetchPostRes} from "./../../helpers/FormHelper";

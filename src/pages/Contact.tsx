@@ -4,7 +4,7 @@ import { Form, Input, Textarea } from "../components/FormGroup";
 import { contactActionUrl } from "../helpers/ApiLinks";
 import MacNav from "../components/MacNav";
 import { fetchPostRes } from "../helpers/FormHelper";
-import { snackbar } from "../components/Snackbar";
+import { snackbar } from "../components/PopupManager";
 
 type Inputs = {
   name: string;

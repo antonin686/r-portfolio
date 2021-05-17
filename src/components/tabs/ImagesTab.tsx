@@ -5,7 +5,7 @@ import ImageCol from "./../../helpers/columns/ImageCol";
 import useDialog from "./../../hooks/useDialog";
 import { fetchPostRes } from "./../../helpers/FormHelper";
 import { imageCreateUrl, imageUpdateUrl } from "./../../helpers/ApiLinks";
-import { snackbar } from "../../components/Snackbar";
+import { snackbar } from "../PopupManager";
 
 interface props {
   page_id: number;

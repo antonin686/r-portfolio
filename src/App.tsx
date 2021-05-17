@@ -16,7 +16,7 @@ import ProIndex from "./pages/projects/Index";
 import ProEdit from "./pages/projects/Edit";
 import ProCreate from "./pages/projects/Create";
 import ContactView from "./pages/admin/ContactView";
-import { SnackbarContainer } from "./components/Snackbar";
+import { PopupContainer } from "./components/PopupManager";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
             <PrivateRoute path="/admin/contacts" component={ContactView} />
           </Switch>
         </BrowserRouter>
-        <SnackbarContainer />
+        <PopupContainer />
       </AuthProvider>
       <Footer />
     </div>

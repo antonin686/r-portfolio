@@ -7,7 +7,7 @@ import MacNav from "./../../components/MacNav";
 import Sidebar from "./../../components/Sidebar";
 import { fetchPostRes } from "../../helpers/FormHelper";
 import { projectsCreateUrl } from "../../helpers/ApiLinks";
-import { snackbar } from "../../components/Snackbar";
+import { snackbar } from "../../components/PopupManager";
 
 type Inputs = {
   header_title: string;

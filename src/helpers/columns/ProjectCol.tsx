@@ -1,9 +1,9 @@
 import { useHistory } from "react-router-dom";
-import { IconButton, Paper } from "@material-ui/core";
-import { snackbar } from "../../components/Snackbar";
+import { IconButton } from "@material-ui/core";
+import { dialog } from "../../components/PopupManager";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
-import useDialog from "./../../hooks/useDialog";
+import { projectsDeleteUrl } from "./../ApiLinks";
 
 const ProjectCol = (renewState: any) => {
   const history = useHistory();
@@ -11,15 +11,9 @@ const ProjectCol = (renewState: any) => {
     history.push("/admin/projects/edit/" + id);
   };
 
-  // const DialogContent = () => <div>Hello</div>;
-  // const [setUpdateDialogOpen, UpdateDialog] = useDialog({
-  //   Content: DialogContent,
-  //   title: "Delete",
-  // });
-
-  // <UpdateDialog />
-  const deleteHandler = () => {
-   
+  const deleteHandler = async (id: any) => {
+    let url = projectsDeleteUrl + id;
+    dialog.delete(url, renewState);
   };
 
   const columns = [
@@ -60,7 +54,7 @@ const ProjectCol = (renewState: any) => {
             <IconButton onClick={() => updateHandler(row.original.id)} color="primary">
               <FaEdit />
             </IconButton>
-            <IconButton onClick={deleteHandler} color="secondary">
+            <IconButton onClick={() => deleteHandler(row.original.id)} color="secondary">
               <RiDeleteBin2Line />
             </IconButton>
           </div>
