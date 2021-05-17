@@ -2,16 +2,13 @@ import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Chip, Button } from "@material-ui/core";
-import {
-  Form,
-  InputReq,
-  Textarea,
-  TextareaReq,
-} from "./../../components/FormGroup";
+import { Form, InputReq, Textarea, TextareaReq } from "./../../components/FormGroup";
 import MacNav from "./../../components/MacNav";
 import Sidebar from "./../../components/Sidebar";
-import { succMsg, errMsg, fetchPostRes } from "../../helpers/FormHelper";
+import { fetchPostRes } from "../../helpers/FormHelper";
 import { projectsCreateUrl } from "../../helpers/ApiLinks";
+import { snackbar } from "../../components/Snackbar";
+
 type Inputs = {
   header_title: string;
   header_body: string;
@@ -45,15 +42,15 @@ function Create() {
     } else setTagsErr(null);
     let conTags = tags.join("|");
     data.tags = conTags;
-    data.image = data.image[0]
+    data.image = data.image[0];
     const result = await fetchPostRes(projectsCreateUrl, data);
 
     if (result === 200) {
-      succMsg("Project Successfully Added", () => {
+      snackbar.success("Project Successfully Added", () => {
         history.push("/admin/projects");
       });
     } else {
-      errMsg(result);
+      snackbar.error(result);
     }
   };
   const addTagHandler = () => {
@@ -85,27 +82,15 @@ function Create() {
                 <Form register={register} errors={errors} submitter={submitter}>
                   <div className="c-form-row-1-2">
                     <InputReq name="header_title" className="c-input" />
-                    <TextareaReq
-                      name="header_body"
-                      className="c-input"
-                      rows={1}
-                    />
+                    <TextareaReq name="header_body" className="c-input" rows={1} />
                   </div>
                   <div className="c-form-row-1-2">
                     <InputReq name="main_title" className="c-input" />
-                    <TextareaReq
-                      name="main_body"
-                      className="c-input"
-                      rows={1}
-                    />
+                    <TextareaReq name="main_body" className="c-input" rows={1} />
                   </div>
                   <div className="c-form-row-1-2">
                     <InputReq name="extra_title" className="c-input" />
-                    <Textarea
-                      name="extra_body"
-                      className="c-input"
-                      rows={1}
-                    />
+                    <Textarea name="extra_body" className="c-input" rows={1} />
                   </div>
                   <div className="c-form-row-2 grid-center">
                     <div className="c-form-row-2-1 grid-center">

@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { Form, Input, Textarea } from "../components/FormGroup";
 import { contactActionUrl } from "../helpers/ApiLinks";
 import MacNav from "../components/MacNav";
-import { fetchPostRes, succMsg, errMsg } from "../helpers/FormHelper";
+import { fetchPostRes } from "../helpers/FormHelper";
+import { snackbar } from "../components/Snackbar";
 
 type Inputs = {
   name: string;
@@ -22,18 +23,18 @@ function Contact() {
   const onSubmit = async (data: Inputs) => {
     const result = await fetchPostRes(contactActionUrl, data);
     if (result === 200) {
-      succMsg("Your Message Has Been Sent", () => {
+      snackbar.success("Your Message Has Been Sent", () => {
         reset();
       });
     } else {
-      errMsg("An Error Occurred");
+      snackbar.error("An Error Occurred");
     }
   };
 
   const submitter = {
     handleSubmit: handleSubmit,
     handler: onSubmit,
-    btnName: "Send"
+    btnName: "Send",
   };
 
   return (

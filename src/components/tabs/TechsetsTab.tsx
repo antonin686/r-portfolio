@@ -3,8 +3,9 @@ import { Button, Grid } from "@material-ui/core";
 import useDialog from "./../../hooks/useDialog";
 import Table from "./../Table";
 import TechsetCol from "./../../helpers/columns/TechsetCol";
-import { fetchPostRes, succMsg, errMsg } from "./../../helpers/FormHelper";
+import { fetchPostRes } from "./../../helpers/FormHelper";
 import { techsetsCreateUrl } from "./../../helpers/ApiLinks";
+import { snackbar } from "../../components/Snackbar";
 
 interface props {
   page_id: number;
@@ -35,9 +36,9 @@ function TechsetsTab({ page_id, techsets, renewState }: props) {
     if (result === 200) {
       setCreateDialogOpen(false);
       renewState();
-      succMsg("Techset Updated");
+      snackbar.success("Techset Updated");
     } else {
-      errMsg("Error Occured");
+      snackbar.error("Error Occured");
     }
   };
 

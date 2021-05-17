@@ -2,10 +2,9 @@ import { useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
-
-import { fetchGetRes, fetchPostRes, succMsg, errMsg } from "./../FormHelper";
+import { fetchGetRes, fetchPostRes } from "./../FormHelper";
 import { finderLinkUpdateUrl, finderLinkDeleteUrl } from "./../ApiLinks";
-import Swal from "sweetalert2";
+import { snackbar } from "../../components/Snackbar";
 
 const LinkCol = (icons: any, renewState: any) => {
   const inputRefs: any = useRef([]);
@@ -21,10 +20,7 @@ const LinkCol = (icons: any, renewState: any) => {
     let newIconValue: string | null = null;
     let newLinkValue: string | null = null;
     inputRefs.current.forEach((element: any) => {
-      if (
-        element.tagName === "SELECT" &&
-        element.name === "icon" + row.original.id
-      ) {
+      if (element.tagName === "SELECT" && element.name === "icon" + row.original.id) {
         newIconValue = element.value;
       } else if (
         element.tagName === "INPUT" &&
@@ -40,32 +36,32 @@ const LinkCol = (icons: any, renewState: any) => {
 
     if (result === 200) {
       renewState();
-      succMsg("Link Updated");
+      snackbar.success("Link Updated");
     } else {
-      errMsg("An Error Occurred");
+      snackbar.error("An Error Occurred");
     }
   };
 
   const deleteHandler = async (row: any) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        let response = await fetchGetRes(finderLinkDeleteUrl + row.original.id);
-        if (response === 200) {
-          renewState();
-          Swal.fire("Deleted!", "Successfully Deleted.", "success");
-        } else {
-          errMsg("An Error Occurred");
-        }
-      }
-    });
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   text: "You won't be able to revert this!",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, delete it!",
+    // }).then(async (result) => {
+    //   if (result.isConfirmed) {
+    //     let response = await fetchGetRes(finderLinkDeleteUrl + row.original.id);
+    //     if (response === 200) {
+    //       renewState();
+    //       Swal.fire("Deleted!", "Successfully Deleted.", "success");
+    //     } else {
+    //       errMsg("An Error Occurred");
+    //     }
+    //   }
+    // });
   };
   const columns = [
     {

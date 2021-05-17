@@ -3,37 +3,37 @@ import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
 
-import { fetchGetRes, succMsg, errMsg } from "./../FormHelper";
+import { fetchGetRes } from "./../FormHelper";
 import { imageDeleteUrl } from "./../ApiLinks";
-import Swal from "sweetalert2";
 import ModalImage from "react-modal-image";
+import { snackbar } from "../../components/Snackbar";
 
 const ImageCol = (renewState: any, updateHandler: any) => {
   const inputRefs: any = useRef([]);
   inputRefs.current = [];
 
   const deleteHandler = async (row: any) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        let response = await fetchGetRes(
-          imageDeleteUrl + `/${row.original.id}`
-        );
-        if (response === 200) {
-          renewState();
-          succMsg("Successfully Deleted");
-        } else {
-          errMsg("An Error Occurred");
-        }
-      }
-    });
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   text: "You won't be able to revert this!",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, delete it!",
+    // }).then(async (result) => {
+    //   if (result.isConfirmed) {
+    //     let response = await fetchGetRes(
+    //       imageDeleteUrl + `/${row.original.id}`
+    //     );
+    //     if (response === 200) {
+    //       renewState();
+    //       succMsg("Successfully Deleted");
+    //     } else {
+    //       errMsg("An Error Occurred");
+    //     }
+    //   }
+    // });
   };
 
   const columns = [
@@ -49,17 +49,15 @@ const ImageCol = (renewState: any, updateHandler: any) => {
     },
     {
       Header: "Title",
-      accessor: "title",      
+      accessor: "title",
     },
     {
       Header: "Image",
       accessor: "path",
       Cell: ({ value }: any) => {
-        return (
-          <ModalImage className="c-form-img" small={value} large={value} />
-        );
+        return <ModalImage className="c-form-img" small={value} large={value} />;
       },
-    },   
+    },
     {
       Header: "Action",
       accessor: "action",

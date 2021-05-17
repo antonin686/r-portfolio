@@ -1,14 +1,12 @@
 import { useHistory } from "react-router-dom";
 import { IconButton, Paper } from "@material-ui/core";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import { snackbar } from "../../components/Snackbar";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import useDialog from "./../../hooks/useDialog";
 
 const ProjectCol = (renewState: any) => {
   const history = useHistory();
-  const MySwal = withReactContent(Swal);
   const updateHandler = (id: number) => {
     history.push("/admin/projects/edit/" + id);
   };
@@ -21,9 +19,7 @@ const ProjectCol = (renewState: any) => {
 
   // <UpdateDialog />
   const deleteHandler = () => {
-    MySwal.fire({
-      showConfirmButton: false,
-    })
+   
   };
 
   const columns = [
@@ -61,10 +57,7 @@ const ProjectCol = (renewState: any) => {
       Cell: ({ row }: any) => {
         return (
           <div>
-            <IconButton
-              onClick={() => updateHandler(row.original.id)}
-              color="primary"
-            >
+            <IconButton onClick={() => updateHandler(row.original.id)} color="primary">
               <FaEdit />
             </IconButton>
             <IconButton onClick={deleteHandler} color="secondary">

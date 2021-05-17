@@ -1,9 +1,10 @@
 import { useRef } from "react";
-import { Button, Divider, Grid } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import useDialog from "./../../hooks/useDialog";
+import { snackbar } from "../../components/Snackbar";
 import Table from "./../Table";
 import LinkCol from "./../../helpers/columns/LinkCol";
-import { fetchPostRes, succMsg, errMsg } from "./../../helpers/FormHelper";
+import { fetchPostRes} from "./../../helpers/FormHelper";
 import { finderLinkCreateUrl } from "./../../helpers/ApiLinks";
 
 interface props {
@@ -36,9 +37,9 @@ function LinksTab({ page_id, data, icons, renewState }: props) {
     if (result === 200) {
       setCreateDialogOpen(false);
       renewState();
-      succMsg("Techset Updated");
+      snackbar.success("Techset Updated");
     } else {
-      errMsg("Error Occured");
+      snackbar.error("Error Occured");
     }
   };
 

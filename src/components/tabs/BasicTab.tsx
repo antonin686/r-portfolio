@@ -1,7 +1,8 @@
 import ModalImage from "react-modal-image";
 import { useForm } from "react-hook-form";
+import { snackbar } from "../../components/Snackbar";
 import { Form, InputReq, Input, Textarea, TextareaReq } from "../FormGroup";
-import { succMsg, errMsg, fetchPostRes } from "../../helpers/FormHelper";
+import { fetchPostRes } from "../../helpers/FormHelper";
 import { pagesUpdateUrl } from "../../helpers/ApiLinks";
 import { IpageInfo } from "../../helpers/Interfaces";
 import { Button } from "@material-ui/core";
@@ -40,13 +41,12 @@ function BasicTab({ pageInfo, renewState }: props) {
     if (!data.img) delete data.img;
     else data.img = data.img[0];
     const result = await fetchPostRes(pagesUpdateUrl + pageInfo.id, data);
-    //console.log(result);
 
     if (result === 200) {
-      succMsg("Basic Info Updated");
+      snackbar.success("Basic Info Updated");
       renewState();
     } else {
-      errMsg("An Error Occurred");
+      snackbar.error("An Error Occurred");
     }
   };
 
@@ -68,12 +68,7 @@ function BasicTab({ pageInfo, renewState }: props) {
           <TextareaReq name="main_body" className="c-input" rows={2} />
           <Textarea name="extra_body" className="c-input" rows={2} />
           <div className="c-form-row-2 grid-center">
-            <Input
-              type="file"
-              label="Upload Image"
-              name="img"
-              className="c-input"
-            />
+            <Input type="file" label="Upload Image" name="img" className="c-input" />
             <div>
               <ModalImage
                 className="c-form-img"

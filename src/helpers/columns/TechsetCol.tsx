@@ -3,9 +3,9 @@ import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
 
-import { fetchGetRes, fetchPostRes, succMsg, errMsg } from "./../FormHelper";
+import { fetchGetRes, fetchPostRes } from "./../FormHelper";
 import { techsetsUpdateUrl, techsetsDeleteUrl } from "./../ApiLinks";
-import Swal from "sweetalert2";
+import { snackbar } from "../../components/Snackbar";
 
 const TechsetCol = (renewState: any) => {
   const inputRefs: any = useRef([]);
@@ -34,35 +34,33 @@ const TechsetCol = (renewState: any) => {
 
     if (result === 200) {
       renewState();
-      succMsg("Techset Updated");
+      snackbar.success("Techset Updated");
     } else {
-      errMsg("An Error Occurred");
+      snackbar.error("An Error Occurred");
     }
   };
 
   const deleteHandler = async (row: any) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        let response = await fetchGetRes(
-          techsetsDeleteUrl + `/${row.original.id}`
-        );
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   text: "You won't be able to revert this!",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, delete it!",
+    // }).then(async (result) => {
+    //   if (result.isConfirmed) {
+    //     let response = await fetchGetRes(techsetsDeleteUrl + `/${row.original.id}`);
 
-        if (response === 200) {
-          renewState();
-          Swal.fire("Deleted!", "Successfully Deleted.", "success");
-        } else {
-          errMsg("An Error Occurred");
-        }
-      }
-    });
+    //     if (response === 200) {
+    //       renewState();
+    //       Swal.fire("Deleted!", "Successfully Deleted.", "success");
+    //     } else {
+    //       errMsg("An Error Occurred");
+    //     }
+    //   }
+    // });
   };
 
   const columns = [

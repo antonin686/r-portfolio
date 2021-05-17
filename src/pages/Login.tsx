@@ -2,11 +2,12 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import useAuth from "./../hooks/useAuth";
+import {snackbar} from "../components/Snackbar";
 import { Form, InputReq, InputPass } from "../components/FormGroup";
 import MacNav from "../components/MacNav";
 
 import { loginActionUrl } from "./../helpers/ApiLinks";
-import { fetchPostRes, succMsg, errMsg } from "./../helpers/FormHelper";
+import { fetchPostRes } from "./../helpers/FormHelper";
 
 type Inputs = {
   username: string;
@@ -15,6 +16,7 @@ type Inputs = {
 
 function Login() {
   const auth = useAuth();
+  //const snackbar = useSnackbar();
   const history = useHistory();
   const {
     register,
@@ -24,13 +26,14 @@ function Login() {
 
   const onSubmit = async (data: Inputs) => {
     const result = await fetchPostRes(loginActionUrl, data);
+    
     if (result.isAuth) {
-      succMsg("Credentials Matched", () => {
+      snackbar.success("Credentials Matched", () => {
         auth.signIn(result);
         history.push("/admin/dashboard");
       });
     } else {
-      errMsg("Credentials Does Not Matched");
+      //snackbar.error("Credentials Does Not Matched");
     }
   };
 
@@ -49,8 +52,8 @@ function Login() {
           <div className="contact-form-wrapper">
             <div className="title-lg text-center">Enter Your Credentials</div>
             <Form register={register} errors={errors} submitter={submitter}>
-              <InputReq name="username"  />
-              <InputPass name="password" rule={{ required: true }} />          
+              <InputReq name="username" />
+              <InputPass name="password" rule={{ required: true }} />
             </Form>
           </div>
         </div>

@@ -3,8 +3,9 @@ import { Button, Grid } from "@material-ui/core";
 import Table from "./../Table";
 import ImageCol from "./../../helpers/columns/ImageCol";
 import useDialog from "./../../hooks/useDialog";
-import { fetchPostRes, succMsg, errMsg } from "./../../helpers/FormHelper";
+import { fetchPostRes } from "./../../helpers/FormHelper";
 import { imageCreateUrl, imageUpdateUrl } from "./../../helpers/ApiLinks";
+import { snackbar } from "../../components/Snackbar";
 
 interface props {
   page_id: number;
@@ -42,14 +43,14 @@ function ImagesTab({ page_id, data, renewState }: props) {
     };
     let result = await fetchPostRes(imageCreateUrl, data);
     if (result === 200) {
-      succMsg("Image Details Updated");
+      snackbar.success("Image Details Updated");
       setCreateDialogOpen(false);
       renewState();
     } else {
-      errMsg(result);
+      snackbar.error(result);
     }
   };
-  
+
   const updateSubmitHandler = async () => {
     let title = titleEl.current.value;
     let image = imgEl.current.files[0];
@@ -65,12 +66,12 @@ function ImagesTab({ page_id, data, renewState }: props) {
     };
     let result = await fetchPostRes(imageUpdateUrl + rowData?.id, data);
     if (result === 200) {
-      succMsg("Image Details Updated");
+      snackbar.error("Image Details Updated");
       setUpdateDialogOpen(false);
       renewState();
     } else {
       setUpdateDialogOpen(false);
-      errMsg(result);
+      snackbar.error(result);
     }
   };
 
