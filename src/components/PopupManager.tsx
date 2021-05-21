@@ -15,13 +15,17 @@ function PopupContainer() {
 }
 
 const snackbar = {
-  success: (message: string, callback?: any) => {
+  success: (message: string, callback?: any, autoHideDuration?: number) => {
     const handleClose = () => {
       ReactDOM.render(<></>, document.getElementById("custom-popup-container"));
       if (callback) callback();
     };
     let element = (
-      <Snackbar open={true} autoHideDuration={2000} onClose={handleClose}>
+      <Snackbar
+        open={true}
+        autoHideDuration={autoHideDuration ? autoHideDuration : 2000}
+        onClose={handleClose}
+      >
         <Alert onClose={handleClose} variant="filled" severity="success">
           {message}
         </Alert>
@@ -62,7 +66,7 @@ const dialog = {
     const deleteHandler = async () => {
       let response = await fetchGetRes(url);
       handleClose();
-      console.log(response)
+      console.log(response);
       if (response === 200) {
         renewState();
         snackbar.success("Successfully Deleted.");

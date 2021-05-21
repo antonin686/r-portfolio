@@ -31,7 +31,7 @@ function Login() {
       snackbar.success("Credentials Matched", () => {
         auth.signIn(result);
         history.push("/admin/dashboard");
-      });
+      }, 1000);
     } else {
       //snackbar.error("Credentials Does Not Matched");
     }
