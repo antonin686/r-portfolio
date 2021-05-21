@@ -1,12 +1,24 @@
-const ContactCol = [
+import { BsInfoCircle } from "react-icons/bs";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { IconButton } from "@material-ui/core";
+import { dialog } from "../../components/PopupManager";
+import { contactDeleteUrl } from "./../ApiLinks";
+
+const ContactCol = (renewState: any, infoHandler: any) => {
+  const deleteHandler = async (id: number) => {
+    let url = contactDeleteUrl + id;
+    dialog.delete(url, renewState);
+  };
+
+  const column = [
     {
       Header: "id",
       accessor: "id",
     },
     {
       Header: "#",
-      Cell: ({row}: any) => {
-        return <div id={row.original.id}>{row.original.id}</div>;
+      Cell: ({ row }: any) => {
+        return row.original.id;
       },
     },
     {
@@ -14,13 +26,9 @@ const ContactCol = [
       accessor: "name",
     },
     {
-      Header: "Email",
-      accessor: "email",
+      Header: "Subject",
+      accessor: "subject",
     },
-    {
-        Header: "Subject",
-        accessor: "subject",
-      },
     {
       Header: "Added",
       accessor: "created_at",
@@ -28,7 +36,27 @@ const ContactCol = [
         return value.split(" ")[0].split("-").reverse().join("/");
       },
     },
+    {
+      Header: "Actions",
+      Cell: ({ row }: any) => {
+        return (
+          <div>
+            <IconButton
+              onClick={async () => infoHandler(row.original.id)}
+              color="primary"
+            >
+              <BsInfoCircle />
+            </IconButton>
+            <IconButton onClick={() => deleteHandler(row.original.id)} color="secondary">
+              <RiDeleteBin2Line />
+            </IconButton>
+          </div>
+        );
+      },
+    },
   ];
-  
-  export default ContactCol;
-  
+
+  return column;
+};
+
+export default ContactCol;

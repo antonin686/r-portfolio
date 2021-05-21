@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
@@ -7,10 +6,9 @@ import ModalImage from "react-modal-image";
 import { dialog } from "../../components/PopupManager";
 
 const ImageCol = (renewState: any, updateHandler: any) => {
-  
-  const deleteHandler = async (row: any) => {
-    let url = imageDeleteUrl + row.original.id;
-    dialog.delete(url, renewState)
+  const deleteHandler = async (id: number) => {
+    let url = imageDeleteUrl + id;
+    dialog.delete(url, renewState);
   };
 
   const columns = [
@@ -44,7 +42,7 @@ const ImageCol = (renewState: any, updateHandler: any) => {
             <IconButton onClick={async () => updateHandler(row)} color="primary">
               <FaEdit />
             </IconButton>
-            <IconButton onClick={() => deleteHandler(row)} color="secondary">
+            <IconButton onClick={() => deleteHandler(row.original.id)} color="secondary">
               <RiDeleteBin2Line />
             </IconButton>
           </div>

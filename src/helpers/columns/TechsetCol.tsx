@@ -16,19 +16,19 @@ const TechsetCol = (renewState: any) => {
     }
   };
 
-  const updateHandler = async (row: any) => {
+  const updateHandler = async (id: any) => {
     let newNameValue = null;
     let newExtraValue = null;
     inputRefs.current.forEach((element: any) => {
-      if (element.name === "name" + row.original.id) {
+      if (element.name === "name" + id) {
         newNameValue = element.value;
-      } else if (element.name === "extra" + row.original.id) {
+      } else if (element.name === "extra" + id) {
         newExtraValue = element.value;
       }
     });
 
     let data = { name: newNameValue, extra: newExtraValue };
-    let url = techsetsUpdateUrl + `/${row.original.id}`;
+    let url = techsetsUpdateUrl + id;
     let result = await fetchPostRes(url, data);
 
     if (result === 200) {
@@ -39,9 +39,9 @@ const TechsetCol = (renewState: any) => {
     }
   };
 
-  const deleteHandler = async (row: any) => {
-    let url = techsetsDeleteUrl + row.original.id;
-    dialog.delete(url, renewState)
+  const deleteHandler = async (id: number) => {
+    let url = techsetsDeleteUrl + id;
+    dialog.delete(url, renewState);
   };
 
   const columns = [
@@ -89,10 +89,10 @@ const TechsetCol = (renewState: any) => {
       Cell: ({ row }: any) => {
         return (
           <div>
-            <IconButton onClick={() => updateHandler(row)} color="primary">
+            <IconButton onClick={() => updateHandler(row.original.id)} color="primary">
               <FaEdit />
             </IconButton>
-            <IconButton onClick={() => deleteHandler(row)} color="secondary">
+            <IconButton onClick={() => deleteHandler(row.original.id)} color="secondary">
               <RiDeleteBin2Line />
             </IconButton>
           </div>

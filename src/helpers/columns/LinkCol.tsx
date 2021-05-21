@@ -16,22 +16,19 @@ const LinkCol = (icons: any, renewState: any) => {
     }
   };
 
-  const updateHandler = async (row: any) => {
+  const updateHandler = async (id: number) => {
     let newIconValue: string | null = null;
     let newLinkValue: string | null = null;
     inputRefs.current.forEach((element: any) => {
-      if (element.tagName === "SELECT" && element.name === "icon" + row.original.id) {
+      if (element.tagName === "SELECT" && element.name === "icon" + id) {
         newIconValue = element.value;
-      } else if (
-        element.tagName === "INPUT" &&
-        element.name === "link" + row.original.id
-      ) {
+      } else if (element.tagName === "INPUT" && element.name === "link" + id) {
         newLinkValue = element.value;
       }
     });
 
     let data = { icon_id: newIconValue, link: newLinkValue };
-    let url = finderLinkUpdateUrl + row.original.id;
+    let url = finderLinkUpdateUrl + id;
     let result = await fetchPostRes(url, data);
 
     if (result === 200) {
@@ -42,9 +39,9 @@ const LinkCol = (icons: any, renewState: any) => {
     }
   };
 
-  const deleteHandler = async (row: any) => {
-    let url = finderLinkDeleteUrl + row.original.id;
-    dialog.delete(url, renewState)
+  const deleteHandler = async (id: number) => {
+    let url = finderLinkDeleteUrl + id;
+    dialog.delete(url, renewState);
   };
 
   const columns = [
@@ -98,10 +95,10 @@ const LinkCol = (icons: any, renewState: any) => {
       Cell: ({ row }: any) => {
         return (
           <div>
-            <IconButton onClick={() => updateHandler(row)} color="primary">
+            <IconButton onClick={() => updateHandler(row.original.id)} color="primary">
               <FaEdit />
             </IconButton>
-            <IconButton onClick={() => deleteHandler(row)} color="secondary">
+            <IconButton onClick={() => deleteHandler(row.original.id)} color="secondary">
               <RiDeleteBin2Line />
             </IconButton>
           </div>

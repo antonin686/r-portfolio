@@ -11,7 +11,7 @@ const ProjectCol = (renewState: any) => {
     history.push("/admin/projects/edit/" + id);
   };
 
-  const deleteHandler = async (id: any) => {
+  const deleteHandler = async (id: number) => {
     let url = projectsDeleteUrl + id;
     dialog.delete(url, renewState);
   };
