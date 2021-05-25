@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Breadcrumbs } from "@material-ui/core";
 import useGetFetch from "./../../hooks/useGetFetch";
 import useNavTabs from "../../hooks/useNavTabs";
 import { projectPageUrl, iconsIndexUrl } from "./../../helpers/ApiLinks";
@@ -16,6 +18,7 @@ function Edit() {
   const tabItems = ["Basic", "Techsets", "Links", "Images"];
   const { tab, Tabs } = useNavTabs(tabItems, "Basic");
   const [icons] = useGetFetch(iconsIndexUrl);
+  console.log(projectPage)
   return (
     <div>
       <MacNav />
@@ -32,12 +35,17 @@ function Edit() {
               {!projectPage || !icons ? (
                 <CustomLoader />
               ) : (
-                <div>
+                <div className="c-tab-wrapper">
+                  <div className="c-breadcrumbs">
+                    <Breadcrumbs>
+                      <Link to="/admin/projects">
+                        Projects
+                      </Link>
+                      <div className="text-secondary">Edit</div>
+                    </Breadcrumbs>
+                  </div>
                   {tab === "Basic" && (
-                    <BasicTab
-                      pageInfo={projectPage.pageInfo}
-                      renewState={renewState}
-                    />
+                    <BasicTab pageInfo={projectPage.pageInfo} renewState={renewState} />
                   )}
                   {tab === "Techsets" && (
                     <TechsetsTab

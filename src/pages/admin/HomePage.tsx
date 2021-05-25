@@ -29,7 +29,7 @@ function HomePage() {
               {!homePage || !icons ? (
                 <CustomLoader />
               ) : (
-                <div>
+                <div className="c-tab-wrapper">
                   {tab === "Basic" && (
                     <BasicTab
                       pageInfo={homePage.pageInfo}

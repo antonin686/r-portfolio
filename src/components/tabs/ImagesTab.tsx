@@ -103,7 +103,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
   });
 
   return (
-    <div className="c-tab-wrapper">
+    <div>
       <Grid container spacing={1}>
         <Grid item>
           <Button

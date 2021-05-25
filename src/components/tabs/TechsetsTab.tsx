@@ -64,7 +64,7 @@ function TechsetsTab({ page_id, techsets, renewState }: props) {
   return (
     <div>
       {techsets && (
-        <div className="c-tab-wrapper">
+        <div>
           <Grid container spacing={1}>
             <Grid item>
               <Button

@@ -13,7 +13,10 @@ const ProjectCol = (renewState: any) => {
 
   const deleteHandler = async (id: number) => {
     let url = projectsDeleteUrl + id;
-    dialog.delete(url, renewState);
+    dialog.delete(url, renewState, () => {
+      history.push("/admin/contacts");
+      history.goBack();
+    });
   };
 
   const columns = [

@@ -1,5 +1,6 @@
 interface IpageInfo {
   id: string;
+  project_id: string;
   header_title: string;
   header_body: string;
   img_path: string;
@@ -7,7 +8,9 @@ interface IpageInfo {
   main_body: string;
   extra_title: string;
   extra_body: string;
-  tags?: string[];
+  type?: string;
+  tags?: any;
+  status?: any;
 }
 
 interface IfinderLink {
@@ -35,6 +38,7 @@ interface Iproject {
   header_title: string;
   header_body: string;
   img_path: string;
+  status: number;
 }
 
 interface Iimage {

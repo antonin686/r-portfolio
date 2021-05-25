@@ -68,7 +68,7 @@ function LinksTab({ page_id, data, icons, renewState }: props) {
   });
 
   return (
-    <div className="c-tab-wrapper">
+    <div>
       <Grid container spacing={1}>
         <Grid item>
           <Button

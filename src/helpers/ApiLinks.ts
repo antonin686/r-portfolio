@@ -5,6 +5,7 @@ export const homePageUrl: string = `${hostnameAPI}/pageinfo/defaultPage`;
 export const projectPageUrl: string = `${hostnameAPI}/pageinfo/projectPage/`;
 export const projectsUrl: string = `${hostnameAPI}/projects`;
 export const projectsCreateUrl: string = `${hostnameAPI}/projects/create`;
+export const projectsUpdateUrl: string = `${hostnameAPI}/projects/update/`;
 export const projectsDeleteUrl: string = `${hostnameAPI}/projects/delete/`;
 export const contactIndexUrl: string = `${hostnameAPI}/contacts`;
 export const contactActionUrl: string = `${hostnameAPI}/contacts/create`;

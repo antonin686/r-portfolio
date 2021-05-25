@@ -1,11 +1,12 @@
+import React, { useState, useRef } from "react";
 import ModalImage from "react-modal-image";
 import { useForm } from "react-hook-form";
 import { snackbar } from "../PopupManager";
 import { Form, InputReq, Input, Textarea, TextareaReq } from "../FormGroup";
 import { fetchPostRes } from "../../helpers/FormHelper";
-import { pagesUpdateUrl } from "../../helpers/ApiLinks";
+import { pagesUpdateUrl, projectsUpdateUrl } from "../../helpers/ApiLinks";
 import { IpageInfo } from "../../helpers/Interfaces";
-import { Button } from "@material-ui/core";
+import { Button, Chip, Switch } from "@material-ui/core";
 type Inputs = {
   header_title: string;
   header_body: string;
@@ -14,6 +15,9 @@ type Inputs = {
   extra_title: string;
   extra_body: string;
   img: any;
+  tags?: string;
+  status?: string;
+  page_id?: string;
 };
 interface props {
   pageInfo: IpageInfo;
@@ -21,6 +25,10 @@ interface props {
 }
 
 function BasicTab({ pageInfo, renewState }: props) {
+  const [tags, setTags] = useState<any>(pageInfo.tags);
+  const [status, setStatus] = useState<boolean>(pageInfo.status);
+  const [tagsErr, setTagsErr] = useState<any>(null);
+  const tagInputEl = useRef<any>();
   const {
     register,
     handleSubmit,
@@ -38,9 +46,23 @@ function BasicTab({ pageInfo, renewState }: props) {
   });
 
   const onSubmit = async (data: Inputs) => {
+    let url = pagesUpdateUrl + pageInfo.id;
+    if (pageInfo.type === "project") {
+      if (!tags.length) {
+        setTagsErr("*At least 1 tag needed");
+        return;
+      } else {
+        setTagsErr(null);
+        data.tags = tags.join("|");
+        data.page_id = pageInfo.id;
+        data.status = status ? "1" : "0";
+        url = projectsUpdateUrl + pageInfo.project_id;
+      }
+    }
     if (!data.img) delete data.img;
     else data.img = data.img[0];
-    const result = await fetchPostRes(pagesUpdateUrl + pageInfo.id, data);
+
+    const result = await fetchPostRes(url, data);
 
     if (result === 200) {
       snackbar.success("Basic Info Updated");
@@ -50,38 +72,111 @@ function BasicTab({ pageInfo, renewState }: props) {
     }
   };
 
+  const addTagHandler = () => {
+    let value = tagInputEl.current.value;
+    if (value) setTags([...tags, value]);
+  };
+
+  const deleteTagHandler = (data: string) => {
+    setTags(tags.filter((tag: any) => data !== tag));
+  };
+
+  const handleStatus = () => {
+    setStatus(!status);
+  };
+
   const submitter = {
     handleSubmit: handleSubmit,
     handler: onSubmit,
+    btnName: "Update Information",
   };
 
+  console.log(pageInfo);
   return (
-    <div className="c-tab-wrapper">
+    <div>
       <div className="c-form">
-        <Form register={register} errors={errors} submitter={submitter}>
-          <div className="c-form-row-3">
-            <InputReq name="header_title" className="c-input" />
-            <InputReq name="main_title" className="c-input" />
-            <InputReq name="extra_title" className="c-input" />
-          </div>
-          <TextareaReq name="header_body" className="c-input" rows={2} />
-          <TextareaReq name="main_body" className="c-input" rows={2} />
-          <Textarea name="extra_body" className="c-input" rows={2} />
-          <div className="c-form-row-2 grid-center">
-            <Input type="file" label="Upload Image" name="img" className="c-input" />
-            <div>
-              <ModalImage
-                className="c-form-img"
-                small={pageInfo.img_path}
-                large={pageInfo.img_path}
-              />
+        {tags ? (
+          <Form register={register} errors={errors} submitter={submitter}>
+            <Switch
+              color="primary"
+              checked={status}
+              onChange={handleStatus}
+              name="Completed"
+            />
+            <div className="c-form-row-1-2">
+              <InputReq name="header_title" className="c-input" />
+              <TextareaReq name="header_body" className="c-input" rows={2} />
             </div>
-          </div>
+            <div className="c-form-row-1-2">
+              <InputReq name="main_title" className="c-input" />
+              <TextareaReq name="main_body" className="c-input" rows={2} />
+            </div>
+            <div className="c-form-row-1-2">
+              <InputReq name="extra_title" className="c-input" />
+              <Textarea name="extra_body" className="c-input" rows={2} />
+            </div>
 
-          <Button variant="contained" type="submit" color="primary">
-            Update Information
-          </Button>
-        </Form>
+            <div className="c-form-row-2 grid-center">
+              <Input type="file" label="Upload Image" name="img" className="c-input" />
+              <div>
+                <ModalImage
+                  className="c-form-img"
+                  small={pageInfo.img_path}
+                  large={pageInfo.img_path}
+                />
+              </div>
+            </div>
+            <div className="c-form-row-1-2 grid-center">
+              <div className="c-form-row-2-1 grid-center">
+                <div>
+                  <label>Tags</label>
+                  <input ref={tagInputEl} className="c-input" />
+                </div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="btn-chip"
+                  onClick={addTagHandler}
+                >
+                  Add
+                </Button>
+              </div>
+              <div className="tags-array">
+                {tags.map((tag: string, index: number) => (
+                  <Chip
+                    key={index}
+                    className="tags"
+                    label={tag}
+                    onDelete={() => deleteTagHandler(tag)}
+                    color="primary"
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="text-danger">{tagsErr}</div>
+          </Form>
+        ) : (
+          <Form register={register} errors={errors} submitter={submitter}>
+            <div className="c-form-row-3">
+              <InputReq name="header_title" className="c-input" />
+              <InputReq name="main_title" className="c-input" />
+              <InputReq name="extra_title" className="c-input" />
+            </div>
+            <TextareaReq name="header_body" className="c-input" rows={2} />
+            <TextareaReq name="main_body" className="c-input" rows={2} />
+            <Textarea name="extra_body" className="c-input" rows={2} />
+            <div className="c-form-row-2 grid-center">
+              <Input type="file" label="Upload Image" name="img" className="c-input" />
+              <div>
+                <ModalImage
+                  className="c-form-img"
+                  small={pageInfo.img_path}
+                  large={pageInfo.img_path}
+                />
+              </div>
+            </div>
+          </Form>
+        )}
       </div>
     </div>
   );

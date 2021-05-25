@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Chip, Button } from "@material-ui/core";
+import { Chip, Button, Breadcrumbs } from "@material-ui/core";
 import { Form, InputReq, Textarea, TextareaReq } from "./../../components/FormGroup";
 import MacNav from "./../../components/MacNav";
 import Sidebar from "./../../components/Sidebar";
@@ -77,7 +77,13 @@ function Create() {
           </div>
           <div className="c-card">
             <div className="c-card-header">Create Project</div>
-            <div className="c-card-body">
+            <div className="c-card-body c-tab-wrapper">
+              <div className="c-breadcrumbs">
+                <Breadcrumbs>
+                  <Link to="/admin/projects">Projects</Link>
+                  <div className="text-secondary">Create</div>
+                </Breadcrumbs>
+              </div>
               <div className="c-form">
                 <Form register={register} errors={errors} submitter={submitter}>
                   <div className="c-form-row-1-2">
@@ -114,6 +120,7 @@ function Create() {
                           className="tags"
                           label={tag}
                           onDelete={() => deleteTagHandler(tag)}
+                          color="primary"
                         />
                       ))}
                     </div>

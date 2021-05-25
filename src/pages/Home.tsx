@@ -83,6 +83,7 @@ function Home() {
                           body={project.header_body}
                           image={project.img_path}
                           tags={project.tags}
+                          status={project.status}
                         />
                       </Link>
                     </div>

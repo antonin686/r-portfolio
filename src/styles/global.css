@@ -14,6 +14,7 @@
   --shadowColor: #111921;
   --frontColor: rgba(25, 39, 52, 0.75);
   --frontLineColor: #17a2b8;
+  --cardHeader: #111921;
 }
 
 body {
@@ -106,6 +107,20 @@ p {
   color: var(--textColor);
 }
 
+.text-secondary {
+  color: gray;
+}
+
+/* Material-UI */
+
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+  background-color: #3f51b5 !important;
+}
+
+.MuiSwitch-track {
+  background-color: white !important;
+}
+
 .section-primary {
   background-color: var(--primaryColor);
   padding-top: 3.5rem;
@@ -165,7 +180,7 @@ p {
   display: flex;
   font-family: "Russo One", sans-serif;
   width: 100%;
-  background: #111921;
+  background: var(--cardHeader);
   padding: 0.75rem;
   border-bottom: 1px solid #164d56;
 }
@@ -181,15 +196,38 @@ p {
   padding: 1rem 0.5rem;
 }
 
+.c-breadcrumbs {
+  background: var(--cardHeader);
+  border: 1px solid var(--borderColor);
+  margin-bottom: 1rem;
+  padding: .45rem 1rem;
+  border-radius: 5px;
+  display: flex;
+}
+
+.MuiBreadcrumbs-separator{
+  color: white;
+}
+
+.c-tab-wrapper {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-rows: auto;
+}
+
+@media (min-width: 768px) {
+  .c-tab-wrapper {
+    margin: 1rem 2rem;
+  }
+}
+
 .c-tab {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
   background: #111921;
   margin: 0.5rem 0;
   padding: 0.5rem;
-  border-bottom: 1px solid #164d56;
+  border-bottom: 1px solid var(--borderColor);
 }
 
 .c-tab .active {
@@ -215,7 +253,7 @@ p {
   cursor: pointer;
 }
 .c-submit-btn {
-  margin-top: 0.25rem !important;
+  margin-top: 0.35rem !important;
 }
 
 .c-w-50 {
@@ -280,7 +318,7 @@ p {
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
 }
-.c-input:hover{
+.c-input:hover {
   border: 1px solid var(--frontLineColor) !important;
 }
 .c-label {
@@ -349,8 +387,8 @@ input[type="file"].c-input::file-selector-button {
   background: #111921;
   padding: 0.75rem;
   text-align: left;
-  border-top: 1px solid #164d56;
-  border-bottom: 1px solid #164d56;
+  border-top: 1px solid var(--borderColor);
+  border-bottom: 1px solid var(--borderColor);
 }
 
 .table thead th {
@@ -375,7 +413,7 @@ input[type="file"].c-input::file-selector-button {
 
 .table tbody td {
   padding: 0.5rem;
-  border-bottom: 1px solid #164d56;
+  border-bottom: 1px solid var(--borderColor);
 }
 
 .table-search-box {
@@ -429,6 +467,12 @@ input[type="file"].c-input::file-selector-button {
 .tags-array {
   width: 100%;
   margin-top: 1.3rem !important;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .tags-array  {
+    margin-bottom: 0rem;
+  }
 }
 
 .tags {
