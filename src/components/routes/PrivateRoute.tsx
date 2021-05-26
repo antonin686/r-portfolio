@@ -1,9 +1,9 @@
 import { Route, Redirect } from "react-router-dom";
-import useAuth from "./../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 function PrivateRoute({ children, ...rest }: any) {
   const auth = useAuth();
-
+  //console.log(rest);
   return (
     <div>
       {auth.user.isAuth ? (

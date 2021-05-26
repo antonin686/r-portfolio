@@ -55,27 +55,18 @@ function ContactMessages() {
 
   const columns = ContactCol(renewState, infoHandler);
   return (
-    <div>
-      <MacNav />
-      <div className="container">
-        <div className="main-wrapper">
-          <div>
-            <Sidebar />
-          </div>
-          <div className="c-card">
-            <div className="c-card-header">Contact Messages</div>
-            <div className="c-card-body">
-              <div className="c-tab-wrapper">
-                <div className="responsive">
-                  {messages && <Table columns={columns} data={messages} />}
-                </div>
-              </div>
-            </div>
+    <React.Fragment>
+      <div className="c-card-header">Contact Messages</div>
+      <div className="c-card-body">
+        <div className="c-tab-wrapper">
+          <div className="responsive">
+            {messages && <Table columns={columns} data={messages} />}
           </div>
         </div>
       </div>
+
       <InfoDialog />
-    </div>
+    </React.Fragment>
   );
 }
 

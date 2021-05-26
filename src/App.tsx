@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import PorjectDetails from "./pages/projects/Details";
-import PrivateRoute from "./components/PrivateRoute";
+import AdminRoute from "./components/routes/AdminRoute";
 import Dashboard from "./pages/admin/Dashboard";
 import HomePage from "./pages/admin/HomePage";
 import ProIndex from "./pages/projects/Index";
@@ -29,12 +29,12 @@ function App() {
             <Route path="/contact" component={Contact} />
             <Route exact path="/projects/:id" component={PorjectDetails} />
             <Route exact path="/admin" component={Login} />
-            <PrivateRoute path="/admin/dashboard" component={Dashboard} />
-            <PrivateRoute path="/admin/home-page" component={HomePage} />
-            <PrivateRoute exact path="/admin/projects" component={ProIndex} />
-            <PrivateRoute path="/admin/projects/edit/:id" component={ProEdit} />
-            <PrivateRoute path="/admin/projects/create" component={ProCreate} />
-            <PrivateRoute path="/admin/contacts" component={ContactView} />
+            <AdminRoute path="/admin/dashboard" component={Dashboard} />
+            <AdminRoute path="/admin/home-page" component={HomePage} />
+            <AdminRoute exact path="/admin/projects" component={ProIndex} />
+            <AdminRoute path="/admin/projects/edit/:id" component={ProEdit} />
+            <AdminRoute path="/admin/projects/create" component={ProCreate} />
+            <AdminRoute path="/admin/contacts" component={ContactView} />
           </Switch>
         </BrowserRouter>
         <PopupContainer />
