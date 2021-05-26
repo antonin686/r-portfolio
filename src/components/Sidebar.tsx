@@ -13,9 +13,8 @@ function Sidebar() {
   useEffect(() => {
     axios.get(sidebarInfoUrl).then((response) => {
       const updatedItems = [...fItems];
-      updatedItems.forEach((item) => {
-        if (item.match === "projects") item.value = response.data.projects;
-        else if (item.match === "contacts") item.value = response.data.contacts;
+      updatedItems.forEach((item) => {      
+        if (item.match === "contacts") item.value = response.data.contacts;
       });
       setItems(updatedItems);
     });

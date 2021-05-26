@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
-import { fetchPostRes } from "./../FormHelper";
-import { finderLinkUpdateUrl, finderLinkDeleteUrl } from "./../ApiLinks";
-import { snackbar, dialog } from "../../components/PopupManager";
+import { fetchPostRes } from "../../helpers/FormHelper";
+import { finderLinkUpdateUrl, finderLinkDeleteUrl } from "../../helpers/ApiLinks";
+import { snackbar, dialog } from "../PopupManager";
 
 const LinkCol = (icons: any, renewState: any) => {
   const inputRefs: any = useRef([]);

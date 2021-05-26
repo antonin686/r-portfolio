@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
-import { fetchPostRes } from "./../FormHelper";
-import { techsetsUpdateUrl, techsetsDeleteUrl } from "./../ApiLinks";
-import { snackbar, dialog } from "../../components/PopupManager";
+import { fetchPostRes } from "../../helpers/FormHelper";
+import { techsetsUpdateUrl, techsetsDeleteUrl } from "../../helpers/ApiLinks";
+import { snackbar, dialog } from "../PopupManager";
 
 const TechsetCol = (renewState: any) => {
   const inputRefs: any = useRef([]);

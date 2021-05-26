@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Button, Grid } from "@material-ui/core";
 import Table from "./../Table";
-import ImageCol from "./../../helpers/columns/ImageCol";
+import ImageCol from "../columns/ImageCol";
 import useDialog from "./../../hooks/useDialog";
 import { fetchPostRes } from "./../../helpers/FormHelper";
 import { imageCreateUrl, imageUpdateUrl } from "./../../helpers/ApiLinks";

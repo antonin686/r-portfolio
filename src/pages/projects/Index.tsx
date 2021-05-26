@@ -4,7 +4,7 @@ import MacNav from "./../../components/MacNav";
 import Sidebar from "./../../components/Sidebar";
 import { projectsUrl } from "./../../helpers/ApiLinks";
 import Table from "./../../components/Table";
-import ProjectCol from "./../../helpers/columns/ProjectCol";
+import ProjectCol from "../../components/columns/ProjectCol";
 import useGetFetch from "./../../hooks/useGetFetch";
 function Index() {
   const history = useHistory();

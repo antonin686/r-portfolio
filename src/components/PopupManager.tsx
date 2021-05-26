@@ -52,7 +52,7 @@ const snackbar = {
 };
 
 const dialog = {
-  delete: (url: string, renewState: any, callback?: any) => {
+  delete: (url: string, renewState: any) => {
     const handleClose = () => {
       ReactDOM.render(<></>, document.getElementById("custom-popup-container"));
     };
@@ -66,9 +66,8 @@ const dialog = {
     const deleteHandler = async () => {
       let response = await fetchGetRes(url);
       handleClose();
-      console.log(response);
-      if (response === 200) {
-        if (callback) callback();
+      // console.log(response);
+      if (response === 200) {     
         renewState();
         snackbar.success("Successfully Deleted.");
       } else {

@@ -7,7 +7,7 @@ import Sidebar from "../../components/Sidebar";
 import { contactIndexUrl, contactShowUrl } from "../../helpers/ApiLinks";
 import Table from "../../components/Table";
 import useGetFetch from "../../hooks/useGetFetch";
-import ContactCol from "../../helpers/columns/ContactCol";
+import ContactCol from "../../components/columns/ContactCol";
 import { IContact } from "../../helpers/Interfaces";
 function ContactMessages() {
   const [messages, renewState] = useGetFetch(contactIndexUrl);

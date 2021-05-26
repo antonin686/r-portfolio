@@ -1,9 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { IconButton } from "@material-ui/core";
-import { dialog } from "../../components/PopupManager";
+import { dialog } from "../PopupManager";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
-import { projectsDeleteUrl } from "./../ApiLinks";
+import { projectsDeleteUrl } from "../../helpers/ApiLinks";
 
 const ProjectCol = (renewState: any) => {
   const history = useHistory();
@@ -13,10 +13,7 @@ const ProjectCol = (renewState: any) => {
 
   const deleteHandler = async (id: number) => {
     let url = projectsDeleteUrl + id;
-    dialog.delete(url, renewState, () => {
-      history.push("/admin/contacts");
-      history.goBack();
-    });
+    dialog.delete(url, renewState);
   };
 
   const columns = [

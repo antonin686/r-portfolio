@@ -1,9 +1,9 @@
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
-import { imageDeleteUrl } from "./../ApiLinks";
+import { imageDeleteUrl } from "../../helpers/ApiLinks";
 import ModalImage from "react-modal-image";
-import { dialog } from "../../components/PopupManager";
+import { dialog } from "../PopupManager";
 
 const ImageCol = (renewState: any, updateHandler: any) => {
   const deleteHandler = async (id: number) => {

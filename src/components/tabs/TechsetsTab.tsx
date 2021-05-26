@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Button, Grid } from "@material-ui/core";
 import useDialog from "./../../hooks/useDialog";
 import Table from "./../Table";
-import TechsetCol from "./../../helpers/columns/TechsetCol";
+import TechsetCol from "../columns/TechsetCol";
 import { fetchPostRes } from "./../../helpers/FormHelper";
 import { techsetsCreateUrl } from "./../../helpers/ApiLinks";
 import { snackbar } from "../PopupManager";

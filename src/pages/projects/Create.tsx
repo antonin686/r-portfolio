@@ -128,7 +128,6 @@ function Create() {
                   <div className="text-danger">{tagsErr}</div>
                   <div className="c-form-row-2 grid-center">
                     <InputReq type="file" name="image" className="c-input" />
-                    <div></div>
                   </div>
                 </Form>
               </div>

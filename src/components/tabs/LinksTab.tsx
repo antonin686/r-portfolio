@@ -3,7 +3,7 @@ import { Button, Grid } from "@material-ui/core";
 import useDialog from "./../../hooks/useDialog";
 import { snackbar } from "../PopupManager";
 import Table from "./../Table";
-import LinkCol from "./../../helpers/columns/LinkCol";
+import LinkCol from "../columns/LinkCol";
 import { fetchPostRes} from "./../../helpers/FormHelper";
 import { finderLinkCreateUrl } from "./../../helpers/ApiLinks";
 

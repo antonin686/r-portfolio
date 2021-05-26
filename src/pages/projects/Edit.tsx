@@ -18,7 +18,7 @@ function Edit() {
   const tabItems = ["Basic", "Techsets", "Links", "Images"];
   const { tab, Tabs } = useNavTabs(tabItems, "Basic");
   const [icons] = useGetFetch(iconsIndexUrl);
-  console.log(projectPage)
+  
   return (
     <div>
       <MacNav />

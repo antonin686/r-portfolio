@@ -7,13 +7,7 @@ interface IformProps {
   errors: any;
   submitter?: any;
 }
-const Form = ({
-  children,
-  register,
-  errors,
-  submitter,
-  ...rest
-}: IformProps) => {
+const Form = ({ children, register, errors, submitter, ...rest }: IformProps) => {
   let label: string = "";
 
   const convLabel = (name: string) => {
@@ -32,53 +26,57 @@ const Form = ({
   };
   const CreateInputs = ({ children, ...rest }: any) => (
     <div {...rest}>
-      {children.map((child: any, index: any) => {
-        return child.props.name ? (
-          <ProcessedInput key={child.props.name} child={child} />
-        ) : Array.isArray(child.props.children) ? (
-          <CreateInputs
-            {...child.props}
-            key={index}
-            children={child.props.children}
-          />
-        ) : (
-          child
-        );
-      })}
+      {Array.isArray(children)
+        ? children.map((child: any, index: any) => {
+            return child.props.name ? (
+              <ProcessedInput key={index} child={child} />
+            ) : typeof child.props.children === "object" ? (
+              <CreateInputs
+                {...child.props}
+                key={index}
+                children={child.props.children}
+              />
+            ) : (
+              child
+            );
+          })
+        : children && <ProcessedInput child={children} />}
     </div>
   );
   const ProcessedInput = ({ child }: any) => (
     <div>
-      <label htmlFor={child.props.name} className="c-label">
-        {child.props.label
-          ? (label = child.props.label)
-          : (label = convLabel(child.props.name))}
-      </label>
-      {React.createElement(child.type, {
-        ...{
-          ...child.props,
-          register,
-          key: child.props.name,
-        },
-      })}
-      {errors[child.props.name] && (
-        <div className="text-danger">
-          *
-          {errors[child.props.name].message
-            ? errors[child.props.name].message
-            : `${label} is required`}
-        </div>
+      {child.props?.name ? (
+        <React.Fragment>
+          <label htmlFor={child.props.name} className="c-label">
+            {child.props.label
+              ? (label = child.props.label)
+              : (label = convLabel(child.props.name))}
+          </label>
+          {React.createElement(child.type, {
+            ...{
+              ...child.props,
+              register,
+              key: child.props.name,
+            },
+          })}
+          {errors[child.props.name] && (
+            <div className="text-danger">
+              *
+              {errors[child.props.name].message
+                ? errors[child.props.name].message
+                : `${label} is required`}
+            </div>
+          )}
+        </React.Fragment>
+      ) : (
+        child
       )}
     </div>
   );
 
   return (
     <form onSubmit={submitter.handleSubmit(submitter.handler)} {...rest}>
-      {Array.isArray(children) ? (
-        <CreateInputs children={children} />
-      ) : (
-        children
-      )}
+      {Array.isArray(children) ? <CreateInputs children={children} /> : children}
       {submitter.btnName && (
         <Button
           variant="contained"
@@ -122,12 +120,4 @@ const InputFileReq = ({ register, name, label, ...rest }: any) => {
   return <input type="file" {...register(name, rule)} {...rest} />;
 };
 
-export {
-  Form,
-  Input,
-  InputPass,
-  InputReq,
-  Textarea,
-  TextareaReq,
-  InputFileReq,
-};
+export { Form, Input, InputPass, InputReq, Textarea, TextareaReq, InputFileReq };

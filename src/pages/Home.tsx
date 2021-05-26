@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Carousel from "react-elastic-carousel";
-
 import { Itechset, IhomePage, Iproject } from "../helpers/Interfaces";
 import { homePageUrl, projectsUrl, resumeUrl } from "../helpers/ApiLinks";
 import useGetFetch from "../hooks/useGetFetch";
@@ -67,7 +66,7 @@ function Home() {
         </div>
       )}
       <div className="section-primary">
-        <div className="title-lg text-center">My Past Projects</div>
+        <div className="title-lg text-center">My Project List</div>
         <div className="container">
           <div className="projectCard-wrapper">
             {!projects ? (
@@ -84,6 +83,7 @@ function Home() {
                           image={project.img_path}
                           tags={project.tags}
                           status={project.status}
+                          timespan={project.timespan}
                         />
                       </Link>
                     </div>

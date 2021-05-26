@@ -211,6 +211,25 @@
   overflow: hidden;
 }
 
+.project-card:hover{
+  opacity: .8;
+}
+
+.project-card-height {
+  min-height: 31rem;
+}
+
+.project-tags{
+  position: absolute;
+  bottom: 0px;
+}
+
+@media (min-width: 768px) {
+  .project-card-height {
+    min-height: 27rem;
+  }
+}
+
 .ribbon{
   width: 150px;
   height: 150px;

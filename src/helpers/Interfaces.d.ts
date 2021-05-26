@@ -38,7 +38,8 @@ interface Iproject {
   header_title: string;
   header_body: string;
   img_path: string;
-  status: number;
+  status: string;
+  timespan: string;
 }
 
 interface Iimage {

@@ -1,17 +1,12 @@
 import { BsInfoCircle } from "react-icons/bs";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
-import { dialog } from "../../components/PopupManager";
-import { contactDeleteUrl } from "./../ApiLinks";
-import { useHistory } from "react-router";
+import { dialog } from "../PopupManager";
+import { contactDeleteUrl } from "../../helpers/ApiLinks";
 const ContactCol = (renewState: any, infoHandler: any) => {
-  const history = useHistory();
   const deleteHandler = async (id: number) => {
     let url = contactDeleteUrl + id;
-    dialog.delete(url, renewState, () => {
-      history.push("/admin/projects");
-      history.goBack();
-    });
+    dialog.delete(url, renewState);
   };
 
   const column = [
