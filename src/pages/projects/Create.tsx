@@ -3,8 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Chip, Button, Breadcrumbs } from "@material-ui/core";
 import { Form, InputReq, Textarea, TextareaReq } from "./../../components/FormGroup";
-import MacNav from "./../../components/MacNav";
-import Sidebar from "./../../components/Sidebar";
 import { fetchPostRes } from "../../helpers/FormHelper";
 import { projectsCreateUrl } from "../../helpers/ApiLinks";
 import { snackbar } from "../../components/PopupManager";

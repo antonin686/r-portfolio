@@ -4,8 +4,6 @@ import { Breadcrumbs } from "@material-ui/core";
 import useGetFetch from "./../../hooks/useGetFetch";
 import useNavTabs from "../../hooks/useNavTabs";
 import { projectPageUrl, iconsIndexUrl } from "./../../helpers/ApiLinks";
-import MacNav from "./../../components/MacNav";
-import Sidebar from "./../../components/Sidebar";
 import CustomLoader from "../../components/CustomLoader";
 import BasicTab from "../../components/tabs/BasicTab";
 import TechsetsTab from "../../components/tabs/TechsetsTab";

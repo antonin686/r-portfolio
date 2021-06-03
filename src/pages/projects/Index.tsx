@@ -1,7 +1,5 @@
 import { useHistory } from "react-router-dom";
 import { Button, Grid } from "@material-ui/core";
-import MacNav from "./../../components/MacNav";
-import Sidebar from "./../../components/Sidebar";
 import { projectsUrl } from "./../../helpers/ApiLinks";
 import Table from "./../../components/Table";
 import ProjectCol from "../../components/columns/ProjectCol";

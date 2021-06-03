@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Button, Divider, Typography } from "@material-ui/core";
 import useDialog from "./../../hooks/useDialog";
 import { fetchGetRes } from "../../helpers/FormHelper";
-import MacNav from "../../components/MacNav";
-import Sidebar from "../../components/Sidebar";
 import { contactIndexUrl, contactShowUrl } from "../../helpers/ApiLinks";
 import Table from "../../components/Table";
 import useGetFetch from "../../hooks/useGetFetch";
