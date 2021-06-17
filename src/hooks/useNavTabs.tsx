@@ -8,7 +8,7 @@ function useNavTabs(items: string[], initial: string) {
 
   const Tabs = () => {
     return (
-      <div>
+      <div className="c-tab">
         {items.map((item: string) => (
           <button
             key={item}

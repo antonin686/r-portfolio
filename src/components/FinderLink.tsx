@@ -6,10 +6,11 @@ interface props {
 }
 
 function FinderLink({ link, icon }: props) {
+  console.log(icon)
   return (
-    <div>
+    <div className="finderLink">
       <a target="_blank" rel="noreferrer" href={link}>
-        <img className="finder-icon" src={iconsUrl + icon} alt={icon} />
+        <img className="finder-icon filter-green" src={iconsUrl + icon} alt={icon} />
       </a>
     </div>
   );

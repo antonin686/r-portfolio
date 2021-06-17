@@ -1,11 +1,11 @@
-:root {
+/* :root {
   --titleFont: "Russo One", sans-serif;
   --bodyFont: "Roboto Mono", monospace;
 
   --primaryColor: #15202b;
   --secondaryColor: #192734;
   --tertiaryColor: rgb(226, 226, 226);
-  --textColor: rgb(226, 226, 226);
+  --primaryText: rgb(226, 226, 226);
   --borderColor: #164d56;
   --anchorColor: #4299e1;
   --mac-dot-red: #fc6058;
@@ -15,12 +15,13 @@
   --frontColor: rgba(25, 39, 52, 0.75);
   --frontLineColor: #17a2b8;
   --cardHeader: #111921;
-}
+} */
 
 body {
   margin: 0;
+  padding: 0;
   background-color: var(--secondaryColor);
-  color: var(--textColor);
+  color: var(--primaryText);
   font-family: var(--bodyFont);
 }
 
@@ -104,16 +105,17 @@ p {
   color: #fc6058;
 }
 .text-primary {
-  color: var(--textColor);
+  color: var(--primaryText);
 }
 
 .text-secondary {
   color: gray;
 }
 
-
 /* Material-UI */
-
+.MuiButton-label{
+  color: white !important;
+}
 .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
   background-color: #3f51b5 !important;
 }
@@ -175,22 +177,12 @@ p {
   border: 1px solid #164d56;
 }
 
-.c-card-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.c-card-header{
   font-family: "Russo One", sans-serif;
   width: 100%;
   background: var(--cardHeader);
   padding: 0.75rem;
   border-bottom: 1px solid #164d56;
-}
-
-.c-card-header .active {
-  color: #fff !important;
-  border-top: 1px solid #17a2b8;
-  border-left: 1px solid #17a2b8;
-  border-right: 1px solid #17a2b8;
 }
 
 .c-card-body {
@@ -223,19 +215,19 @@ p {
 }
 
 .c-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  font-family: "Russo One", sans-serif;
   width: 100%;
-  background: #111921;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--borderColor);
+  background: var(--cardHeader);
 }
 
 .c-tab .active {
-  color: #fff !important;
-  border-top: 1px solid #17a2b8;
-  border-left: 1px solid #17a2b8;
-  border-right: 1px solid #17a2b8;
+  color: var(--primaryText);
+  border-top: 1px solid var(--frontLineColor);
+  border-left: 1px solid var(--frontLineColor);
+  border-right: 1px solid var(--frontLineColor);
 }
 
 .c-tab-item {
@@ -243,18 +235,23 @@ p {
   border: none;
   outline: none;
   font-family: "Russo One", sans-serif;
-  color: gray;
+  color: var(--secondaryText);
   padding: 0.5rem 1rem;
   margin: 0 0.75rem;
   font-size: 1rem;
 }
 
 .c-tab-item:hover {
-  color: gray;
+  color: var(--tabHoverColor);
   cursor: pointer;
 }
-.c-submit-btn {
+.c-primary-btn {
+  background: var(--submitBtnColor) !important;
   margin-top: 0.35rem !important;
+}
+
+.c-primary-btn:hover {
+  opacity: .7 !important;
 }
 
 .c-w-50 {
@@ -267,9 +264,9 @@ p {
 
 /* Forms */
 .c-form {
-  border: 1px solid #164d56;
+  border: 1px solid var(--borderColor);
   padding: 1rem;
-  background: #15202b;
+  background: var(--primaryColor);
 }
 
 .c-form-img {
@@ -312,7 +309,7 @@ p {
   box-sizing: border-box;
   background: var(--secondaryColor);
   border: 1px solid var(--borderColor);
-  color: white;
+  color: var(--primaryText);
   width: 100%;
   padding: 0.75rem;
   margin-top: 0.5rem;
@@ -323,14 +320,14 @@ p {
   border: 1px solid var(--frontLineColor) !important;
 }
 .c-label {
-  color: var(--textColor);
+  color: var(--primaryText);
 }
 
 .c-table-input {
   box-sizing: border-box;
   background: var(--secondaryColor);
   border: 1px solid var(--borderColor);
-  color: white;
+  color: var(--primaryText);
   min-width: 100%;
   padding: 0.75rem;
   margin-top: 0.5rem;
@@ -385,7 +382,7 @@ input[type="file"].c-input::file-selector-button {
 }
 
 .table thead {
-  background: #111921;
+  background: var(--cardHeader);
   padding: 0.75rem;
   text-align: left;
   border-top: 1px solid var(--borderColor);
@@ -400,16 +397,14 @@ input[type="file"].c-input::file-selector-button {
   text-align: left;
 }
 
-.table tbody tr:hover {
+.table-hover tbody tr:hover,
+.table-hover tbody tr:nth-child(even):hover{
   background: #181818;
+  color: white;
 }
-
+ 
 .table tbody tr:nth-child(even) {
-  background-color: #15202b;
-}
-
-.table tbody tr:nth-child(even):hover {
-  background: #181818;
+  background-color: var(--cardHeader);
 }
 
 .table tbody td {
@@ -475,10 +470,16 @@ input[type="file"].c-input::file-selector-button {
     margin-bottom: 0rem;
   }
 }
-
+.MuiChip-deleteIcon{
+  color: black !important;
+}
+.MuiChip-deleteIcon:hover{
+  color: black !important;
+  opacity: .7 !important;
+}
 .tags {
   background: var(--secondaryColor) !important;
-  color: var(--textColor) !important;
+  color: var(--primaryText) !important;
   border: 2px solid var(--borderColor) !important;
   margin-left: 0.5rem !important;
 }

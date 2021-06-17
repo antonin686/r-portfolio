@@ -69,7 +69,7 @@ function TechsetsTab({ page_id, techsets, renewState }: props) {
             <Grid item>
               <Button
                 variant="contained"
-                color="primary"
+                className="c-primary-btn"
                 onClick={() => setCreateDialogOpen(true)}
               >
                 Add New Tech

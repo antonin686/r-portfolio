@@ -108,7 +108,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
         <Grid item>
           <Button
             variant="contained"
-            color="primary"
+            className="c-primary-btn"
             onClick={() => {
               setRowData(null);
               setCreateDialogOpen(true);

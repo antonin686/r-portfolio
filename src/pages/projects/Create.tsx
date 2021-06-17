@@ -97,8 +97,7 @@ function Create() {
                 </div>
                 <Button
                   variant="contained"
-                  color="primary"
-                  className="btn-chip"
+                  className="btn-chip c-primary-btn"
                   onClick={addTagHandler}
                 >
                   Add

@@ -21,12 +21,16 @@ function Index() {
         <div className="c-tab-wrapper">
           <Grid container spacing={1}>
             <Grid item>
-              <Button variant="contained" color="primary" onClick={handleAddclick}>
+              <Button
+                variant="contained"
+                className="c-primary-btn"
+                onClick={handleAddclick}
+              >
                 Add New Project
               </Button>
             </Grid>
           </Grid>
-          <div className="responsive">
+          <div className="responsive table-hover">
             {projects && <Table columns={columns} data={projects} />}
           </div>
         </div>

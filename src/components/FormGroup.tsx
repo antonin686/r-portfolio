@@ -82,7 +82,7 @@ const Form = ({ children, register, errors, submitter, ...rest }: IformProps) =>
           variant="contained"
           type="submit"
           color="primary"
-          className="c-submit-btn"
+          className="c-primary-btn"
         >
           {submitter.btnName}
         </Button>

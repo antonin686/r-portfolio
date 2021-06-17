@@ -89,7 +89,8 @@ function BasicTabProject({ pageInfo, renewState }: props) {
   };
   return (
     <React.Fragment>
-      <Switch color="primary" checked={status} onChange={handleStatus} name="Completed" />
+      <strong>Completed:</strong> <Switch color="primary" checked={status} onChange={handleStatus} name="Completed" />
+      <hr />
       <Form register={register} errors={errors} submitter={submitter}>
         <div className="c-form-row-1-2">
           <InputReq name="header_title" className="c-input" />
@@ -119,8 +120,7 @@ function BasicTabProject({ pageInfo, renewState }: props) {
             </div>
             <Button
               variant="contained"
-              color="primary"
-              className="btn-chip"
+              className="btn-chip c-primary-btn"
               onClick={addTagHandler}
             >
               Add

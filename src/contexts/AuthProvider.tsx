@@ -33,11 +33,6 @@ function AuthProvider(props: any) {
           type: initialState.type,
           sidebarInfo: initialState.sidebarInfo,
         };
-      case AUTH_ACTION.GET_SIDEBAR_INFO:
-        return {
-          ...state,
-          sidebarInfo: 
-        };
       default:
         return state;
     }

@@ -73,7 +73,7 @@ function LinksTab({ page_id, data, icons, renewState }: props) {
         <Grid item>
           <Button
             variant="contained"
-            color="primary"
+            className="c-primary-btn"
             onClick={() => setCreateDialogOpen(true)}
           >
             Add New Link

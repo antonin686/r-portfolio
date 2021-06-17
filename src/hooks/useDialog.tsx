@@ -18,7 +18,7 @@ function useDialog({ Content, title, Action, submit, type }: props) {
   const handleClose = () => setOpen(false);
   const paperStyle = {
     style: {
-      backgroundColor: "#15202b",
+      backgroundColor: "var(--primaryColor)",
     },
   };
   if (!Content && type === "delete") {
@@ -32,7 +32,7 @@ function useDialog({ Content, title, Action, submit, type }: props) {
       </DialogContent>
       <DialogActions>
         <Button variant="contained" onClick={handleClose} color="secondary">
-          Cancel
+          Close
         </Button>
         {Action && <Action />}
         {submit && (

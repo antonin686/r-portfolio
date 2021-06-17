@@ -52,6 +52,7 @@ function ContactMessages() {
   };
 
   const columns = ContactCol(renewState, infoHandler);
+  
   return (
     <React.Fragment>
       <div className="c-card-header">Contact Messages</div>
@@ -62,7 +63,6 @@ function ContactMessages() {
           </div>
         </div>
       </div>
-
       <InfoDialog />
     </React.Fragment>
   );

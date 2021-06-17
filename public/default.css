@@ -1,0 +1,33 @@
+:root {
+  --titleFont: "Russo One", sans-serif;
+  --bodyFont: "Roboto Mono", monospace;
+
+  --mac-dot-red: #fc6058;
+  --mac-dot-yellow: #fec02f;
+  --mac-dot-green: #2aca3e;
+
+  --primaryColor: #15202b;
+  --secondaryColor: #192734;
+
+  --primaryText: rgb(226, 226, 226);
+  --secondaryText: darkgray;
+  --tertiaryColor: rgb(226, 226, 226);
+
+  --borderColor: #164d56;
+  --anchorColor: #4299e1;
+  --bgShadowColor: #111921;
+  --fgShadowColor: rgba(25, 39, 52, 0.75);
+  --frontLineColor: #17a2b8;
+
+  --cardHeader: #111921;
+  --sidebarItem: lightblue;
+  --sidebarHover: #181818;
+
+  --submitBtnColor: #17a2b8;
+
+  --tabHoverColor: gray;
+}
+
+
+
+

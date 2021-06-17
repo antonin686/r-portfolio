@@ -4,7 +4,7 @@ function CustomLoader() {
   return (
     <div className="loader">
       <div className="m-auto title-lg">
-        <Loader type="Puff" color="#00BFFF" height={150} width={150} />
+        <Loader type="Puff" color="var(--frontLineColor)" height={150} width={150} />
       </div>
     </div>
   );
