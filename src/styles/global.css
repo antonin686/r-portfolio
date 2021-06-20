@@ -38,6 +38,12 @@ p {
   overflow-wrap: break-word;
 }
 
+.theme-icon {
+  color: var(--primaryText) !important;
+  margin: 0;
+  padding: 0 !important;
+}
+
 .main-body {
   position: relative;
   min-height: 100vh;
@@ -145,6 +151,9 @@ p {
 
 .flex {
   display: flex;
+}
+.flex-col {
+  flex-direction: column;
 }
 
 .bg-primary {

@@ -157,7 +157,7 @@
 .summary-wrapper .techsets-wrapper {
   display: flex;
   justify-content: space-evenly;
-  background-color: var(--shadowColor);
+  background-color: var(--bgShadowColor);
   padding: 0.5rem;
 }
 

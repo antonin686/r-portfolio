@@ -39,8 +39,8 @@ function Summary({
         </p>
         <div className="techsets-wrapper">
           {techsets &&
-            techsets.map((techset: string[]) => (
-              <ul key={techset.toString()}>
+            techsets.map((techset: string[], index) => (
+              <ul key={index}>
                 {techset.map((set: string) => (
                   <li key={set}>{set}</li>
                 ))}

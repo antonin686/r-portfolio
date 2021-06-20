@@ -6,7 +6,6 @@ interface props {
 }
 
 function FinderLink({ link, icon }: props) {
-  console.log(icon)
   return (
     <div className="finderLink">
       <a target="_blank" rel="noreferrer" href={link}>

@@ -7,8 +7,8 @@ interface props {
 function IntroCard({ image, headerTitle, headerBody }: props) {
   return (
     <div className="introcard-wrapper">
-      <div className="mx-auto">
-        <img src={image} alt="Developer" />
+      <div className="mx-auto flex flex-col">
+        <img src={image} alt="Developer" />       
       </div>
       <div className="intro-summary mx-auto">
         <div className="intro-shadow">

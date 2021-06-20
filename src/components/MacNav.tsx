@@ -2,6 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 
 import useAuth from "../hooks/useAuth";
+import ThemeChanger from "./ThemeChanger";
 
 function MacNav() {
   const auth = useAuth();
@@ -22,10 +23,13 @@ function MacNav() {
               <div className="dot-green"></div>
             </Link>
           </div>
+          <ThemeChanger />
           <div className="nav-wrapper">
-            <div>Welcome,{auth.user.username}</div>   
-            <div className="link-divider">|</div>       
-            <button className="btn-link" onClick={handleSignOut}><FaSignOutAlt className="icon text-danger"/></button>
+            <div>Welcome,{auth.user.username}</div>
+            <div className="link-divider">|</div>
+            <button className="btn-link" onClick={handleSignOut}>
+              <FaSignOutAlt className="icon text-danger" />
+            </button>
           </div>
         </div>
       ) : (
@@ -37,6 +41,7 @@ function MacNav() {
               <div className="dot-green"></div>
             </Link>
           </div>
+          <ThemeChanger />
           <div className="nav-wrapper">
             <Link to="/contact">Contact</Link>
           </div>
