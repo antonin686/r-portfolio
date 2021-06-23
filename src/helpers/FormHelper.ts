@@ -9,7 +9,7 @@ const fetchPostRes = async (action: string, data: any) => {
   });
 
   let myObject = await axios.post(action, formdata);
-
+  //console.log(myObject)
   return myObject.data;
 };
 

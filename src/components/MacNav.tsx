@@ -1,6 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
-
 import useAuth from "../hooks/useAuth";
 import ThemeChanger from "./ThemeChanger";
 

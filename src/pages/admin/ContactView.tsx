@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Divider, Typography } from "@material-ui/core";
-import useDialog from "./../../hooks/useDialog";
+import useDialog from "../../hooks/useDialog";
 import { fetchGetRes } from "../../helpers/FormHelper";
 import { contactIndexUrl, contactShowUrl } from "../../helpers/ApiLinks";
 import Table from "../../components/Table";
@@ -47,6 +47,11 @@ function ContactMessages() {
 
   const infoHandler = async (id: number) => {
     const messageDetails = await fetchGetRes(contactShowUrl + id);
+    //console.log(messageDetails);
+    if(messageDetails.count) {
+      let element: any = document.getElementById('sidebar-contacts');
+      element.innerHTML = messageDetails.count;
+    }
     setMessage(messageDetails);
     setInfoDialogOpen(true);
   };

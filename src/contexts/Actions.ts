@@ -1,7 +1,7 @@
 const AUTH_ACTION = {
   SIGN_IN: "sign-in",
   SIGN_OUT: "sign-out",
-  GET_SIDEBAR_INFO: "get-sidebar-info",
+  SET_SIDEBAR_INFO: "set-sidebar-info",
 };
 
 const SNACKBAR_ACTION = {

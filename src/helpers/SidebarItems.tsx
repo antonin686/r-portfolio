@@ -7,28 +7,28 @@ const items = [
     icon: <FaHome />,
     link: "/admin/dashboard",
     match: "dashboard",
-    value: "",
+    value: false,
   },
   {
     title: "Home Page",
     icon: <FaStar />,
     link: "/admin/home-page",
     match: "home-page",
-    value: "",
+    value: false,
   },
   {
     title: "Projects",
     icon: <FaProductHunt />,
     link: "/admin/projects",
     match: "projects",
-    value: "",
+    value: false,
   },
   {
     title: "Contacts",
     icon: <BsEnvelopeOpenFill />,
     link: "/admin/contacts",
     match: "contacts",
-    value: "",
+    value: true,
   },
 ];
 

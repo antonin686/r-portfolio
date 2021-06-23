@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
 import { Form, Input, Textarea } from "../components/FormGroup";
-import { contactActionUrl } from "../helpers/ApiLinks";
+import { contactCreateUrl } from "../helpers/ApiLinks";
 import MacNav from "../components/MacNav";
 import { fetchPostRes } from "../helpers/FormHelper";
 import { snackbar } from "../components/PopupManager";
@@ -21,7 +21,7 @@ function Contact() {
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit = async (data: Inputs) => {
-    const result = await fetchPostRes(contactActionUrl, data);
+    const result = await fetchPostRes(contactCreateUrl, data);
     if (result === 200) {
       snackbar.success("Your Message Has Been Sent", () => {
         reset();

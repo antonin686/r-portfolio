@@ -13,10 +13,15 @@ function useAuth() {
     dispatch({ type: AUTH_ACTION.SIGN_OUT });
   };
 
+  const setSidebarInfo = (count: number) => {
+    dispatch({ type: AUTH_ACTION.SET_SIDEBAR_INFO, payload: { sidebarInfo: count } });
+  };
+
   return {
     signIn,
     signOut,
     user: state,
+    setSidebarInfo,
   };
 }
 

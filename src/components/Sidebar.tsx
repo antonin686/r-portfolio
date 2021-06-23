@@ -34,7 +34,7 @@ function Sidebar() {
             <div className="flex">
               <div className="sidebar-icon">{item.icon}</div> {item.title}
             </div>
-            {item.value && <div className="pill">{item.value}</div>}
+            {item.value && <div id={`sidebar-${item.match}`} className="pill">{item.value}</div>}
           </Link>
         ))}
     </div>
