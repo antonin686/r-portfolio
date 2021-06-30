@@ -8,7 +8,7 @@
     <meta name="description" content="Portfolio of Md Antonin Islam" />
     <meta
       name="keywords"
-      content="Md Antonin Islam, Antonin Islam, Md.Antonin Islam, antonin686, Web Developer, react developer, laravel developer"
+      content="Md Antonin Islam, Antonin Islam, Md.Antonin Islam, antonin686, Web Developer, React Developer, Laravel developer, Php Developer, JavaScript"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -20,6 +20,9 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="default.css" />
     <link id="theme-changer" rel="stylesheet" href="#" />
     <title>Antonin Islam</title>
@@ -32,7 +35,7 @@
       if (theme === null || theme === "dark") {
         localStorage.setItem("theme", "dark");
         document.getElementById("theme-changer").href = "#";
-      }else{       
+      } else {
         localStorage.setItem("theme", "light");
         document.getElementById("theme-changer").href = "http://localhost:7000/theme.css";
       }

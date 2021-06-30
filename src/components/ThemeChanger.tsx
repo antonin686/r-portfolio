@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { IoIosSunny as Light } from "react-icons/io";
 import { FaMoon as Dark } from "react-icons/fa";

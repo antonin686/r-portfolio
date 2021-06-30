@@ -12,7 +12,7 @@ function MacNav() {
     history.push("/admin");
   }
   return (
-    <div>
+    <nav>
       {auth.user.isAuth ? (
         <div className="macnav-wrapper">
           <div className="mac-dots">
@@ -46,7 +46,7 @@ function MacNav() {
           </div>
         </div>
       )}
-    </div>
+    </nav>
   );
 }
 

@@ -26,14 +26,14 @@ function Login() {
 
   const onSubmit = async (data: Inputs) => {
     const result = await fetchPostRes(loginActionUrl, data);
-    
+    //console.log(result)
     if (result.isAuth) {
       snackbar.success("Credentials Matched", () => {
         auth.signIn(result);
         history.push("/admin/dashboard");
       }, 1000);
     } else {
-      //snackbar.error("Credentials Does Not Matched");
+      snackbar.error("Credentials Does Not Matched");
     }
   };
 

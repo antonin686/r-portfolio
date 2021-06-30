@@ -40,7 +40,7 @@ function Home() {
       ) : (
         <div>
           <div className="section-primary border-bottom">
-            <div className="title-home">Hi, I'm Antonin Islam</div>
+            <header className="title-home">Hi, I'm Antonin Islam</header>
             <div className="container">
               <MacNav />
               <IntroCard
