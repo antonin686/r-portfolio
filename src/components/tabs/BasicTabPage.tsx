@@ -6,6 +6,7 @@ import { fetchPostRes } from "../../helpers/FormHelper";
 import { pagesUpdateUrl } from "../../helpers/ApiLinks";
 import { IpageInfo } from "../../helpers/Interfaces";
 import useAuth from "./../../hooks/useAuth";
+
 type Inputs = {
   header_title: string;
   header_body: string;

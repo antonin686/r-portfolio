@@ -6,6 +6,7 @@ import TechsetCol from "../columns/TechsetCol";
 import { fetchPostRes } from "./../../helpers/FormHelper";
 import { techsetsCreateUrl } from "./../../helpers/ApiLinks";
 import { snackbar } from "../PopupManager";
+import useAuth from "./../../hooks/useAuth";
 
 interface props {
   page_id: number;
@@ -14,6 +15,7 @@ interface props {
 }
 
 function TechsetsTab({ page_id, techsets, renewState }: props) {
+  const auth = useAuth();
   const nameEl = useRef<any>(null);
   const extraEl = useRef<any>(null);
   const nameErrEl = useRef<any>(null);
@@ -30,7 +32,7 @@ function TechsetsTab({ page_id, techsets, renewState }: props) {
       name: nameEl.current.value,
       extra: extraEl.current.value,
     };
-    let result = await fetchPostRes(techsetsCreateUrl, data);
+    let result = await fetchPostRes(techsetsCreateUrl, data, auth.user.token);
 
     if (result === 200) {
       setCreateDialogOpen(false);
@@ -59,7 +61,7 @@ function TechsetsTab({ page_id, techsets, renewState }: props) {
     submit: { handler: onSubmit, text: "Submit" },
   });
 
-  const columns = TechsetCol(renewState);
+  const columns = TechsetCol(renewState, auth.user.token);
 
   return (
     <div>

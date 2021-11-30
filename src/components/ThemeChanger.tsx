@@ -10,7 +10,7 @@ function ThemeChanger() {
   const handleModeClick = () => {
     const element: any = document.getElementById("theme-changer");
     if (theme === "dark" || theme === null) {
-      element.href = "http://localhost:7000/theme.css";
+      element.href = "theme.css";
       setTheme("light");
       localStorage.setItem("theme", "light");
     } else {

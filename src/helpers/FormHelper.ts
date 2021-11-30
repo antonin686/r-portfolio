@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const fetchPostRes = async (action: string, data: any, token?: boolean) => {
+const fetchPostRes = async (action: string, data: any, token?: any) => {
   let formdata = new FormData();
   let dataArr = Object.entries(data).map(([key, value]) => ({ key, value }));
 
@@ -19,7 +19,7 @@ const fetchPostRes = async (action: string, data: any, token?: boolean) => {
   }
 
   let myObject = await axios.post(action, formdata, config);
-  //console.log(myObject)
+  console.log(myObject)
   return myObject.data;
 };
 

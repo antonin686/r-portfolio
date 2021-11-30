@@ -6,7 +6,7 @@ import { fetchPostRes } from "../../helpers/FormHelper";
 import { techsetsUpdateUrl, techsetsDeleteUrl } from "../../helpers/ApiLinks";
 import { snackbar, dialog } from "../PopupManager";
 
-const TechsetCol = (renewState: any) => {
+const TechsetCol = (renewState: any, token: string) => {
   const inputRefs: any = useRef([]);
   inputRefs.current = [];
 
@@ -29,7 +29,7 @@ const TechsetCol = (renewState: any) => {
 
     let data = { name: newNameValue, extra: newExtraValue };
     let url = techsetsUpdateUrl + id;
-    let result = await fetchPostRes(url, data);
+    let result = await fetchPostRes(url, data, token);
 
     if (result === 200) {
       renewState();

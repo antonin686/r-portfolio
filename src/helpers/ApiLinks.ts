@@ -1,6 +1,8 @@
-// const hostApi = "https://portfolio.api.antoninislam.com";
-const host = "http://localhost:7000";
-const hostApi = "http://localhost:7000/api";
+// const host = "http://localhost:7000";
+// const hostApi = "http://localhost:7000/api";
+const host = "https://portfolio-api.antoninislam.com";
+const hostApi = "https://portfolio-api.antoninislam.com/api";
+
 export const homePageUrl: string = `${hostApi}/pageinfo/defaultPage`;
 export const projectPageUrl: string = `${hostApi}/pageinfo/projectPage/`;
 export const projectsUrl: string = `${hostApi}/projects`;

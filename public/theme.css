@@ -1,0 +1,27 @@
+:root {
+  --primaryColor: #eaeaea;
+  --secondaryColor: #fff;
+
+  --socialIconColor: #333;
+
+  --borderColor: #c1c1c1;
+
+  --primaryText: #000;
+  --secondaryText: #4b5156;
+
+  --themeDotBorder: #24292e;
+
+  --fgShadowColor: rgb(251, 249, 243, 0.8);
+  --bgShadowColor: #f0ead6;
+
+  --submitBtnColor: #000;
+  --cardHeader: #eaeaea;
+  --sidebarItem: black;
+  --sidebarHover: gray;
+
+  --frontLineColor: black;
+
+  --tabHoverColor: #15202b;
+
+  --finderLinkFilter: invert(86%) sepia(28%) saturate(212%) hue-rotate(337deg) brightness(110%) contrast(88%);
+}
