@@ -8,7 +8,7 @@ import useGetFetch from "../../hooks/useGetFetch";
 import ContactCol from "../../components/columns/ContactCol";
 import { IContact } from "../../helpers/Interfaces";
 function ContactMessages() {
-  const [messages, renewState] = useGetFetch(contactIndexUrl);
+  const [messages, renewState] = useGetFetch(contactIndexUrl, {auth: true});
   const [message, setMessage] = useState<IContact | null>(null);
 
   const DialogContent = () => (
