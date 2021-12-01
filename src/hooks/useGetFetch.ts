@@ -5,7 +5,6 @@ import useAuth from "./../hooks/useAuth";
 
 interface Ioptions {
   reverse?: boolean;
-  auth?: boolean;
 }
 
 function useGetFetch(url: string, options?: Ioptions) {
@@ -14,10 +13,10 @@ function useGetFetch(url: string, options?: Ioptions) {
 
   const getMethod = useCallback(() => {
     let option: any = '';
-    if (options?.auth) {
+    if (auth.user.token) {
       option = {
         headers : {
-          'Auth-Token' : auth.user.token
+          'auth-token' : auth.user.token
         }
       }
     }
@@ -28,7 +27,7 @@ function useGetFetch(url: string, options?: Ioptions) {
 
       setstate(response.data);
     });
-  }, [options?.reverse, options?.auth, auth.user.token, url]);
+  }, [options?.reverse, auth.user.token, url]);
 
   useEffect(() => {
     getMethod();

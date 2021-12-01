@@ -6,7 +6,7 @@ import { fetchPostRes } from "../../helpers/FormHelper";
 import { finderLinkUpdateUrl, finderLinkDeleteUrl } from "../../helpers/ApiLinks";
 import { snackbar, dialog } from "../PopupManager";
 
-const LinkCol = (icons: any, renewState: any) => {
+const LinkCol = (icons: any, renewState: any, token?: string) => {
   const inputRefs: any = useRef([]);
   inputRefs.current = [];
 
@@ -29,7 +29,7 @@ const LinkCol = (icons: any, renewState: any) => {
 
     let data = { icon_id: newIconValue, link: newLinkValue };
     let url = finderLinkUpdateUrl + id;
-    let result = await fetchPostRes(url, data);
+    let result = await fetchPostRes(url, data, token);
 
     if (result === 200) {
       renewState();
@@ -41,7 +41,7 @@ const LinkCol = (icons: any, renewState: any) => {
 
   const deleteHandler = async (id: number) => {
     let url = finderLinkDeleteUrl + id;
-    dialog.delete(url, renewState);
+    dialog.delete(url, renewState, token);
   };
 
   const columns = [

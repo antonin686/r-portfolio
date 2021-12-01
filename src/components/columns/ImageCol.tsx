@@ -5,10 +5,10 @@ import { imageDeleteUrl } from "../../helpers/ApiLinks";
 import ModalImage from "react-modal-image";
 import { dialog } from "../PopupManager";
 
-const ImageCol = (renewState: any, updateHandler: any) => {
+const ImageCol = (renewState: any, updateHandler: any, token?: string) => {
   const deleteHandler = async (id: number) => {
     let url = imageDeleteUrl + id;
-    dialog.delete(url, renewState);
+    dialog.delete(url, renewState, token);
   };
 
   const columns = [

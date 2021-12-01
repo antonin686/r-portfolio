@@ -7,6 +7,8 @@ import { fetchPostRes } from "../../helpers/FormHelper";
 import { projectsUpdateUrl } from "../../helpers/ApiLinks";
 import { IpageInfo } from "../../helpers/Interfaces";
 import { Button, Chip, Switch } from "@material-ui/core";
+import useAuth from "./../../hooks/useAuth";
+
 type Inputs = {
   header_title: string;
   header_body: string;
@@ -29,6 +31,8 @@ function BasicTabProject({ pageInfo, renewState }: props) {
   const [status, setStatus] = useState<boolean>(pageInfo.status);
   const [tagsErr, setTagsErr] = useState<any>(null);
   const tagInputEl = useRef<any>();
+  const auth = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -59,7 +63,7 @@ function BasicTabProject({ pageInfo, renewState }: props) {
     if (!data.img) delete data.img;
     else data.img = data.img[0];
 
-    const result = await fetchPostRes(projectsUpdateUrl + pageInfo.project_id, data);
+    const result = await fetchPostRes(projectsUpdateUrl + pageInfo.project_id, data, auth.user.token);
 
     if (result === 200) {
       snackbar.success("Basic Info Updated");

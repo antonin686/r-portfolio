@@ -6,6 +6,7 @@ import useDialog from "./../../hooks/useDialog";
 import { fetchPostRes } from "./../../helpers/FormHelper";
 import { imageCreateUrl, imageUpdateUrl } from "./../../helpers/ApiLinks";
 import { snackbar } from "../PopupManager";
+import useAuth from "./../../hooks/useAuth";
 
 interface props {
   page_id: number;
@@ -14,6 +15,7 @@ interface props {
 }
 
 function ImagesTab({ page_id, data, renewState }: props) {
+  const auth = useAuth();
   const titleEl = useRef<any>(null);
   const imgEl = useRef<any>(null);
   const titleErrEl = useRef<any>(null);
@@ -41,7 +43,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
       title: titleEl.current.value,
       image: imgEl.current.files[0],
     };
-    let result = await fetchPostRes(imageCreateUrl, data);
+    let result = await fetchPostRes(imageCreateUrl, data, auth.user.token);
     if (result === 200) {
       snackbar.success("Image Details Updated");
       setCreateDialogOpen(false);
@@ -64,7 +66,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
       title: title,
       image: image,
     };
-    let result = await fetchPostRes(imageUpdateUrl + rowData?.id, data);
+    let result = await fetchPostRes(imageUpdateUrl + rowData?.id, data, auth.user.token);
     if (result === 200) {
       snackbar.error("Image Details Updated");
       setUpdateDialogOpen(false);

@@ -52,7 +52,7 @@ const snackbar = {
 };
 
 const dialog = {
-  delete: (url: string, renewState: any) => {
+  delete: (url: string, renewState: any, token?: string) => {
     const handleClose = () => {
       ReactDOM.render(<></>, document.getElementById("custom-popup-container"));
     };
@@ -64,7 +64,7 @@ const dialog = {
     };
 
     const deleteHandler = async () => {
-      let response = await fetchGetRes(url);
+      let response = await fetchGetRes(url, token);
       handleClose();
       // console.log(response);
       if (response === 200) {     

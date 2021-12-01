@@ -6,7 +6,7 @@ function Footer() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://twitter.com/antonin686"
+          href="https://github.com/antonin686"
         >
           Md.Antonin Islam
         </a>{" "}

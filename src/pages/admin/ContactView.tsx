@@ -7,10 +7,12 @@ import Table from "../../components/Table";
 import useGetFetch from "../../hooks/useGetFetch";
 import ContactCol from "../../components/columns/ContactCol";
 import { IContact } from "../../helpers/Interfaces";
-function ContactMessages() {
-  const [messages, renewState] = useGetFetch(contactIndexUrl, {auth: true});
-  const [message, setMessage] = useState<IContact | null>(null);
+import useAuth from "./../../hooks/useAuth";
 
+function ContactMessages() {
+  const [messages, renewState] = useGetFetch(contactIndexUrl);
+  const [message, setMessage] = useState<IContact | null>(null);
+  const auth = useAuth();
   const DialogContent = () => (
     <React.Fragment>
       <Typography className="text-primary" variant="h5">
@@ -41,12 +43,12 @@ function ContactMessages() {
 
   const [setInfoDialogOpen, InfoDialog]: any = useDialog({
     Content: DialogContent,
-    title: "Add New Link",
+    title: "Contact Message Details",
     Action: Action,
   });
 
   const infoHandler = async (id: number) => {
-    const messageDetails = await fetchGetRes(contactShowUrl + id);
+    const messageDetails = await fetchGetRes(contactShowUrl + id, auth.user.token);
     //console.log(messageDetails);
     if(messageDetails.count) {
       let element: any = document.getElementById('sidebar-contacts');

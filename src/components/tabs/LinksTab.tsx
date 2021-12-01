@@ -6,6 +6,7 @@ import Table from "./../Table";
 import LinkCol from "../columns/LinkCol";
 import { fetchPostRes} from "./../../helpers/FormHelper";
 import { finderLinkCreateUrl } from "./../../helpers/ApiLinks";
+import useAuth from "./../../hooks/useAuth";
 
 interface props {
   page_id: number;
@@ -15,10 +16,11 @@ interface props {
 }
 
 function LinksTab({ page_id, data, icons, renewState }: props) {
+  const auth = useAuth();
   const iconEl = useRef<any>(null);
   const linkEl = useRef<any>(null);
   const linkErrEl = useRef<any>(null);
-  const columns = LinkCol(icons, renewState);
+  const columns = LinkCol(icons, renewState, auth.user.token);
 
   const onSubmit = async () => {
     if (!linkEl.current.value) {
@@ -32,7 +34,7 @@ function LinksTab({ page_id, data, icons, renewState }: props) {
       icon_id: iconEl.current.value,
       link: linkEl.current.value,
     };
-    let result = await fetchPostRes(finderLinkCreateUrl, data);
+    let result = await fetchPostRes(finderLinkCreateUrl, data, auth.user.token);
 
     if (result === 200) {
       setCreateDialogOpen(false);

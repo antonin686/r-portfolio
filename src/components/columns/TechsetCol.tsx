@@ -41,7 +41,7 @@ const TechsetCol = (renewState: any, token: string) => {
 
   const deleteHandler = async (id: number) => {
     let url = techsetsDeleteUrl + id;
-    dialog.delete(url, renewState);
+    dialog.delete(url, renewState, token);
   };
 
   const columns = [
