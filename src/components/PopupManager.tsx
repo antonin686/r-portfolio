@@ -66,7 +66,6 @@ const dialog = {
     const deleteHandler = async () => {
       let response = await fetchGetRes(url, token);
       handleClose();
-      console.log(response);
       if (response === 200) {     
         renewState();
         snackbar.success("Successfully Deleted.");

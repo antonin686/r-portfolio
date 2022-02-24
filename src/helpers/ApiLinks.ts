@@ -27,6 +27,7 @@ export const imageDeleteUrl: string = `${hostApi}/images/delete/`;
 export const finderLinkCreateUrl: string = `${hostApi}/finderlinks/create`;
 export const finderLinkUpdateUrl: string = `${hostApi}/finderlinks/update/`;
 export const finderLinkDeleteUrl: string = `${hostApi}/finderlinks/delete/`;
+export const resumeUpdateUrl: string = `${hostApi}/resume/update`;
 
 
 export const resumeUrl: string = `${host}/uploads/resume.pdf`;
