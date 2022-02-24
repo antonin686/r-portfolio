@@ -58,7 +58,7 @@ function ContactMessages() {
     setInfoDialogOpen(true);
   };
 
-  const columns = ContactCol(renewState, infoHandler);
+  const columns = ContactCol(renewState, infoHandler, auth.user.token);
   
   return (
     <React.Fragment>

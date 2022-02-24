@@ -5,7 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { projectsDeleteUrl } from "../../helpers/ApiLinks";
 
-const ProjectCol = (renewState: any) => {
+const ProjectCol = (renewState: any, token?: string) => {
   const history = useHistory();
   const updateHandler = (id: number) => {
     history.push("/admin/projects/edit/" + id);
@@ -13,7 +13,7 @@ const ProjectCol = (renewState: any) => {
 
   const deleteHandler = async (id: number) => {
     let url = projectsDeleteUrl + id;
-    dialog.delete(url, renewState);
+    dialog.delete(url, renewState, token);
   };
 
   const columns = [

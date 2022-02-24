@@ -25,7 +25,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
     setRowData(row.original);
     setUpdateDialogOpen(true);
   };
-  const columns = ImageCol(renewState, updateHandler);
+  const columns = ImageCol(renewState, updateHandler, auth.user.token);
 
   const createSubmitHandler = async () => {
     let title = titleEl.current.value;
@@ -68,7 +68,7 @@ function ImagesTab({ page_id, data, renewState }: props) {
     };
     let result = await fetchPostRes(imageUpdateUrl + rowData?.id, data, auth.user.token);
     if (result === 200) {
-      snackbar.error("Image Details Updated");
+      snackbar.success("Image Details Updated");
       setUpdateDialogOpen(false);
       renewState();
     } else {
@@ -95,13 +95,13 @@ function ImagesTab({ page_id, data, renewState }: props) {
   const [setCreateDialogOpen, CreateDialog]: any = useDialog({
     Content: DialogContent,
     title: "Add New Image",
-    submit: { handler: createSubmitHandler, text: "Submit" },
+    submit: { handler: createSubmitHandler, text: "Create" },
   });
 
   const [setUpdateDialogOpen, UpdateDialog]: any = useDialog({
     Content: DialogContent,
     title: "Update Image Details",
-    submit: { handler: updateSubmitHandler, text: "Submit" },
+    submit: { handler: updateSubmitHandler, text: "Update" },
   });
 
   return (

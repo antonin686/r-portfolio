@@ -3,10 +3,10 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import { IconButton } from "@material-ui/core";
 import { dialog } from "../PopupManager";
 import { contactDeleteUrl } from "../../helpers/ApiLinks";
-const ContactCol = (renewState: any, infoHandler: any) => {
+const ContactCol = (renewState: any, infoHandler: any, token: string) => {
   const deleteHandler = async (id: number) => {
     let url = contactDeleteUrl + id;
-    dialog.delete(url, renewState);
+    dialog.delete(url, renewState, token);
   };
 
   const column = [

@@ -5,12 +5,14 @@ import Table from "./../../components/Table";
 import ProjectCol from "../../components/columns/ProjectCol";
 import useGetFetch from "./../../hooks/useGetFetch";
 import React from "react";
+import useAuth from "./../../hooks/useAuth";
+
 function Index() {
   const history = useHistory();
   const [projects, renewState] = useGetFetch(projectsUrl);
-
-  const columns = ProjectCol(renewState);
-  const handleAddclick = () => {
+  const auth = useAuth();
+  const columns = ProjectCol(renewState, auth.user.token);
+  const handleAddClick = () => {
     history.push("/admin/projects/create");
   };
 
@@ -24,7 +26,7 @@ function Index() {
               <Button
                 variant="contained"
                 className="c-primary-btn"
-                onClick={handleAddclick}
+                onClick={handleAddClick}
               >
                 Add New Project
               </Button>

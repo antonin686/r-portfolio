@@ -6,6 +6,7 @@ import { Form, InputReq, Textarea, TextareaReq } from "./../../components/FormGr
 import { fetchPostRes } from "../../helpers/FormHelper";
 import { projectsCreateUrl } from "../../helpers/ApiLinks";
 import { snackbar } from "../../components/PopupManager";
+import useAuth from "./../../hooks/useAuth";
 
 type Inputs = {
   header_title: string;
@@ -23,6 +24,8 @@ function Create() {
   const tagInputEl = useRef<any>();
   const [tags, setTags] = useState<string[] | []>([]);
   const [tagsErr, setTagsErr] = useState<any>(null);
+  const auth = useAuth();
+  
   const {
     register,
     handleSubmit,
@@ -41,7 +44,7 @@ function Create() {
     let conTags = tags.join("|");
     data.tags = conTags;
     data.image = data.image[0];
-    const result = await fetchPostRes(projectsCreateUrl, data);
+    const result = await fetchPostRes(projectsCreateUrl, data, auth.user.token);
 
     if (result === 200) {
       snackbar.success("Project Successfully Added", () => {
